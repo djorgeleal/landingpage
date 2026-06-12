@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJORGELEAL </title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            dark: '#030306',
+                            card: '#0a0a12',
+                            panel: '#0e0e1a',
+                            cyan: '#00f2fe',
+                            pink: '#ff003c',
+                            purple: '#7b2cbf',
+                            green: '#39ff14',
+                            amber: '#ffb703'
+                        }
+                    },
+                    boxShadow: {
+                        'neon-cyan': '0 0 15px rgba(0, 242, 254, 0.4)',
+                        'neon-pink': '0 0 20px rgba(255, 0, 60, 0.6)',
+                        'neon-purple': '0 0 15px rgba(123, 44, 191, 0.4)',
+                        'neon-green': '0 0 15px rgba(57, 255, 20, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;600;700&display=swap');
+        
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: #030306;
+            overflow-x: hidden;
+        }
+        .font-orbitron {
+            font-family: 'Orbitron', sans-serif;
+        }
+        /* Custom scrollbar matching the dark industrial red aesthetic */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030306;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ff003c;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7b2cbf;
+        }
+        /* Glowing neon glassmorphism effects */
+        .glass-panel {
+            background: rgba(10, 10, 18, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .glass-panel-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-panel-hover:hover {
+            border-color: rgba(255, 0, 60, 0.3);
+            box-shadow: 0 10px 30px -10px rgba(255, 0, 60, 0.15);
+        }
+        /* Cyber Scanline Overlay */
+        .cyber-grid::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 60, 0.03), rgba(0, 242, 254, 0.01), rgba(0, 0, 0, 0));
+            z-index: 2;
+            background-size: 100% 4px, 6px 100%;
+            pointer-events: none;
+        }
+        /* Keyframe animations */
+        @keyframes cyber-pulse {
+            0%, 100% { opacity: 0.8; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.02); }
+        }
+        .animate-cyber-pulse {
+            animation: cyber-pulse 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="text-white selection:bg-cyber-pink selection:text-white cyber-grid relative">
+
+    <!-- ESTÁTICO DE FONDO INTEGRADO DE FORMA INMERSIVA -->
+    <div class="fixed inset-0 w-full h-full bg-cover bg-center bg-no-repeat pointer-events-none select-none z-0 opacity-25 md:opacity-35 mix-blend-lighten transition-opacity duration-1000"
+         style="background-image: url('https://i.postimg.cc/NFW0wkX6/2026-2-original.png'); background-attachment: fixed;"
+         id="global-static-portrait">
+    </div>
+    
+    <!-- Oscurecimiento perimetral para asegurar una legibilidad impecable -->
+    <div class="fixed inset-0 bg-gradient-to-t from-cyber-dark via-transparent to-cyber-dark pointer-events-none z-[1] opacity-90"></div>
+    <div class="fixed inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0)_10%,rgba(3,3,6,0.9)_90%)] pointer-events-none z-[1]"></div>
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-cyber-dark/85 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-orbitron text-2xl font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-cyber-pink">
+                DJORGELEAL
+            </a>
+            
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-8 text-sm font-semibold tracking-wider uppercase">
+                <a href="#home" class="hover:text-cyber-pink transition-colors relative py-1 group">
+                    Inicio
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyber-pink transition-all group-hover:w-full"></span>
+                </a>
+                <a href="#music" class="hover:text-cyber-pink transition-colors relative py-1 group">
+                    Música
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyber-pink transition-all group-hover:w-full"></span>
+                </a>
+                <a href="#videos" class="hover:text-cyber-pink transition-colors relative py-1 group">
+                    Videos
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyber-pink transition-all group-hover:w-full"></span>
+                </a>
+            </nav>
+
+            <!-- Social quick links -->
+            <div class="hidden lg:flex items-center space-x-4">
+                <a href="https://www.tiktok.com/@djorgeleal" target="_blank" class="text-gray-400 hover:text-cyber-pink transition-colors" title="TikTok">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.02 1.63 4.18 1.15 1.14 2.76 1.77 4.38 1.83v3.91c-1.89-.06-3.72-.78-5.11-2.07v7.54c0 1.08-.2 2.16-.62 3.16-.83 2.13-2.61 3.82-4.78 4.41-1.28.37-2.64.44-3.95.21-2.61-.41-4.9-2.22-5.78-4.72-.45-1.2-.55-2.5-.28-3.75.52-2.19 2-4.05 3.99-5 1.25-.63 2.66-.9 4.06-.82v3.9oc-.83-.09-1.68.12-2.39.56-.99.59-1.61 1.66-1.63 2.82-.03 1.09.52 2.14 1.45 2.69.75.46 1.65.57 2.49.33.9-.23 1.64-.94 1.94-1.83.18-.49.23-1.02.21-1.54V0z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/djorgeleal" target="_blank" class="text-gray-400 hover:text-cyber-pink transition-colors" title="Instagram">
+                    <svg class="w-5 h-5 stroke-current fill-none" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+            </div>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="menu-btn" class="md:hidden text-white focus:outline-none p-1 border border-white/10 rounded" aria-label="Menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-cyber-dark/95 border-b border-white/10 px-6 py-6 space-y-4">
+            <a href="#home" class="block text-lg hover:text-cyber-pink py-2 border-b border-white/5">Inicio</a>
+            <a href="#music" class="block text-lg hover:text-cyber-pink py-2 border-b border-white/5">Música</a>
+            <a href="#videos" class="block text-lg hover:text-cyber-pink py-2 border-b border-white/5">Videos</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION (Symmetric Centered Layout) -->
+    <section id="home" class="relative min-h-screen flex items-center pt-20 overflow-hidden bg-transparent z-10">
+        <!-- Interactive Wave Canvas behind text -->
+        <canvas id="hero-canvas" class="absolute inset-0 w-full h-full opacity-40 z-20 pointer-events-none"></canvas>
+
+        <!-- Dynamic Grid / Synthwave Line Animation Fallback -->
+        <div id="fallback-grid-hero" class="absolute inset-0 z-0 opacity-20 bg-[linear-gradient(rgba(255,0,60,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,0,60,0.05)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none"></div>
+
+        <!-- Glow Accents to lift the text -->
+        <div class="absolute top-1/4 left-1/4 w-80 h-80 bg-cyber-pink/20 rounded-full blur-[120px] pointer-events-none z-10"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-cyber-cyan/15 rounded-full blur-[120px] pointer-events-none z-10"></div>
+
+        <div class="relative z-30 max-w-7xl mx-auto px-6 w-full py-20 flex flex-col items-center justify-center text-center">
+            <!-- Centered Content Wrapper -->
+            <div class="max-w-2xl text-center flex flex-col items-center">
+                <span class="inline-flex items-center gap-2 px-4 py-1.5 bg-cyber-pink/20 border border-cyber-pink/40 text-white rounded-full text-xs uppercase font-semibold tracking-widest mb-6 animate-cyber-pulse">
+                    <span class="w-2.5 h-2.5 rounded-full bg-cyber-pink animate-ping"></span>
+                    Live Set en TikTok
+                </span>
+                
+                <h1 class="font-orbitron text-4xl sm:text-6xl md:text-8xl font-extrabold tracking-tighter mb-10 leading-none text-white">
+                    SIENTE LA <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-pink via-purple-600 to-cyber-cyan">
+                        MÚSICA
+                    </span>
+                </h1>
+                
+                <div class="flex flex-wrap justify-center gap-4 w-full">
+                    <!-- TikTok Button -->
+                    <a href="https://www.tiktok.com/@djorgeleal" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 px-6 py-3.5 bg-black/40 hover:bg-black/70 border border-cyber-cyan/30 hover:border-cyber-cyan rounded-xl text-sm font-orbitron font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 hover:shadow-neon-cyan text-white">
+                        <svg class="w-5 h-5 fill-current text-cyber-cyan group-hover:animate-pulse" viewBox="0 0 24 24">
+                            <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.02 1.63 4.18 1.15 1.14 2.76 1.77 4.38 1.83v3.91c-1.89-.06-3.72-.78-5.11-2.07v7.54c0 1.08-.2 2.16-.62 3.16-.83 2.13-2.61 3.82-4.78 4.41-1.28.37-2.64.44-3.95.21-2.61-.41-4.9-2.22-5.78-4.72-.45-1.2-.55-2.5-.28-3.75.52-2.19 2-4.05 3.99-5 1.25-.63 2.66-.9 4.06-.82v3.9oc-.83-.09-1.68.12-2.39.56-.99.59-1.61 1.66-1.63 2.82-.03 1.09.52 2.14 1.45 2.69.75.46 1.65.57 2.49.33.9-.23 1.64-.94 1.94-1.83.18-.49.23-1.02.21-1.54V0z"/>
+                        </svg>
+                        TikTok
+                    </a>
+
+                    <!-- Instagram Button -->
+                    <a href="https://www.instagram.com/djorgeleal" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 px-6 py-3.5 bg-black/40 hover:bg-black/70 border border-cyber-pink/30 hover:border-cyber-pink rounded-xl text-sm font-orbitron font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 hover:shadow-neon-pink text-white">
+                        <svg class="w-5 h-5 stroke-current fill-none text-cyber-pink group-hover:animate-pulse" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                        Instagram
+                    </a>
+
+                    <!-- Facebook Button -->
+                    <a href="https://www.facebook.com/djorgeleal" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 px-6 py-3.5 bg-black/40 hover:bg-black/70 border border-cyber-purple/30 hover:border-cyber-purple rounded-xl text-sm font-orbitron font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 hover:shadow-neon-purple text-white">
+                        <svg class="w-5 h-5 fill-current text-cyber-purple group-hover:animate-pulse" viewBox="0 0 24 24">
+                            <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.8c4.56-.93 8-4.96 8-9.8z"/>
+                        </svg>
+                        Facebook
+                    </a>
+
+                    <!-- WhatsApp Button -->
+                    <a href="https://wa.me/573188614010?text=Hola%20DJORGELEAL!%20Me%20encantó%20tu%20sitio%20web%20e%20interfaz%20de%20música,%20me%20gustaría%20saber%20más." target="_blank" rel="noopener noreferrer" class="group flex items-center gap-3 px-6 py-3.5 bg-black/40 hover:bg-black/70 border border-cyber-green/30 hover:border-cyber-green rounded-xl text-sm font-orbitron font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 hover:shadow-neon-green text-white">
+                        <svg class="w-5 h-5 fill-current text-cyber-green group-hover:animate-pulse" viewBox="0 0 24 24">
+                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.62.962 3.21 1.468 4.932 1.469 5.405 0 9.801-4.393 9.804-9.797.002-2.597-1.006-5.038-2.842-6.874-1.837-1.836-4.278-2.842-6.883-2.843-5.411 0-9.808 4.393-9.811 9.799-.001 1.83.501 3.559 1.453 5.114l-.956 3.49 3.585-.94c1.554.848 3.177 1.282 4.658 1.282zm11.304-7.618c-.301-.151-1.785-.881-2.062-.982-.278-.102-.48-.152-.681.151-.202.303-.781.982-.957 1.184-.176.202-.352.227-.653.076-.301-.151-1.272-.469-2.423-1.496-.895-.798-1.5-1.784-1.675-2.086-.176-.302-.019-.465.132-.614.136-.134.302-.353.453-.529.151-.176.202-.302.302-.504.101-.202.05-.378-.026-.529-.075-.151-.681-1.642-.932-2.247-.245-.589-.493-.509-.68-.519-.176-.009-.378-.011-.58-.011-.202 0-.53.076-.807.379-.278.302-1.06 1.037-1.06 2.529 0 1.491 1.085 2.932 1.236 3.133.151.202 2.136 3.261 5.175 4.572.723.312 1.288.499 1.728.639.726.23 1.387.198 1.91.12.583-.087 1.785-.73 2.037-1.437.252-.707.252-1.314.176-1.437-.076-.123-.278-.202-.58-.353z"/>
+                        </svg>
+                        WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE DJ CABIN (MUSIC SECTION) -->
+    <section id="music" class="py-24 relative bg-cyber-dark/85 backdrop-blur-md border-t border-white/5 z-10">
+        <!-- Floating decor elements -->
+        <div class="absolute right-0 top-10 w-96 h-96 bg-cyber-pink/5 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="absolute left-0 bottom-10 w-96 h-96 bg-cyber-cyan/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-cyber-pink font-orbitron text-xs tracking-widest uppercase font-bold">Consola Profesional Modular</span>
+                <h2 class="font-orbitron text-4xl md:text-5xl font-black tracking-wide mt-2">
+                    CABINA DE <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-pink to-cyber-cyan">DJ EN VIVO</span>
+                </h2>
+                <p class="text-gray-400 max-w-xl mx-auto mt-4 text-base">
+                    Usa los sintetizadores procedurales integrados para crear ritmos, distorsionar frecuencias con los potenciómetros de efectos, o arrastra tus propios archivos de música.
+                </p>
+            </div>
+
+            <!-- Main DJ Board Interface -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 glass-panel rounded-3xl border border-white/10 p-6 md:p-8 shadow-[0_0_40px_rgba(255,0,60,0.15)] relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-24 h-24 border-r border-t border-cyber-pink/25 rounded-tr-3xl pointer-events-none"></div>
+                <div class="absolute bottom-0 left-0 w-24 h-24 border-l border-b border-cyber-cyan/25 rounded-bl-3xl pointer-events-none"></div>
+
+                <!-- LEFT HALF: Deck & Controls (7 Cols) -->
+                <div class="lg:col-span-7 flex flex-col justify-between space-y-6">
+                    
+                    <!-- Vinyl / Hologram Slipmat Screen -->
+                    <div class="relative aspect-video bg-black/60 border border-white/10 rounded-2xl overflow-hidden flex items-center justify-center p-6">
+                        <!-- Neon Grid background -->
+                        <div class="absolute inset-0 bg-[linear-gradient(rgba(0,242,254,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,242,254,0.03)_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none"></div>
+                        
+                        <!-- Reactive holographic disk -->
+                        <div id="hologram-deck" class="relative w-36 h-36 md:w-44 md:h-44 rounded-full border-4 border-cyber-pink/30 flex items-center justify-center transition-transform duration-[1000ms] ease-linear shadow-[0_0_20px_rgba(255,0,60,0.1)]">
+                            <div class="absolute inset-1 border border-dashed border-cyber-cyan/40 rounded-full animate-[spin_20s_linear_infinite]"></div>
+                            <div class="absolute inset-4 border-2 border-cyber-pink/60 rounded-full animate-[spin_8s_linear_infinite_reverse]"></div>
+                            <div class="absolute inset-8 border border-white/20 rounded-full"></div>
+                            <div class="w-16 h-16 rounded-full bg-cyber-dark border border-white/15 flex items-center justify-center shadow-[0_0_15px_rgba(255,0,60,0.4)] relative">
+                                <span class="text-xl animate-pulse">⚡</span>
+                            </div>
+                        </div>
+
+                        <!-- Active Metadata Overlay -->
+                        <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end bg-black/40 backdrop-blur-sm p-3 rounded-xl border border-white/5">
+                            <div>
+                                <span id="player-genre" class="text-[9px] uppercase font-bold tracking-widest text-white bg-cyber-pink px-2 py-0.5 rounded border border-cyber-pink/30">Acid Techno</span>
+                                <h3 id="player-title" class="font-orbitron font-extrabold text-sm md:text-lg mt-1.5 tracking-wide text-white truncate max-w-[180px] sm:max-w-xs">Neon Awakening</h3>
+                            </div>
+                            <div class="text-right flex flex-col font-orbitron">
+                                <span id="player-time" class="text-sm text-cyber-cyan font-semibold">0:00</span>
+                                <span id="player-duration" class="text-[10px] text-gray-500">0:00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Audio Spectrometer & Visualizer Canvas -->
+                    <div class="bg-black/50 border border-white/10 rounded-2xl p-4 space-y-3 relative">
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center space-x-1.5">
+                                <span class="w-2 h-2 rounded-full bg-cyber-cyan animate-pulse"></span>
+                                <span class="text-[10px] text-cyber-cyan/90 tracking-widest font-orbitron uppercase">Holographic Spectrum</span>
+                            </div>
+                            <!-- Visualizer Mode Selectors -->
+                            <div class="flex space-x-1 bg-white/5 p-0.5 rounded-lg border border-white/5">
+                                <button onclick="setVisualizerMode('bars')" id="v-btn-bars" class="px-2 py-0.5 text-[9px] font-orbitron uppercase tracking-wider rounded bg-cyber-pink text-white transition-colors">BARRAS</button>
+                                <button onclick="setVisualizerMode('ring')" id="v-btn-ring" class="px-2 py-0.5 text-[9px] font-orbitron uppercase tracking-wider rounded text-gray-400 hover:text-white transition-colors">ANILLO</button>
+                                <button onclick="setVisualizerMode('wave')" id="v-btn-wave" class="px-2 py-0.5 text-[9px] font-orbitron uppercase tracking-wider rounded text-gray-400 hover:text-white transition-colors">ONDA</button>
+                            </div>
+                        </div>
+                        <div class="h-28 bg-[#05050a] rounded-xl overflow-hidden relative border border-white/5">
+                            <canvas id="music-visualizer" class="w-full h-full"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Synthesizer / FX Controls Panel -->
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-4">
+                        <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                            <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest font-orbitron flex items-center gap-1.5">
+                                <svg class="w-3.5 h-3.5 text-cyber-cyan animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                                Consola de Efectos del Sintetizador
+                            </span>
+                            <span class="text-[10px] text-cyber-cyan font-semibold tracking-wider font-orbitron uppercase">Frecuencia en Vivo</span>
+                        </div>
+                        
+                        <!-- Modular Knobs Group -->
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                            <!-- FX Cutoff Filter -->
+                            <div class="flex flex-col items-center bg-black/40 p-3 rounded-xl border border-white/5">
+                                <label class="text-[10px] font-bold text-gray-400 font-orbitron mb-2 uppercase">Cutoff Filtro</label>
+                                <input type="range" id="knob-cutoff" min="100" max="8000" value="2500" step="50" class="w-full accent-cyber-pink bg-white/10 rounded-lg h-1.5 appearance-none cursor-pointer">
+                                <span id="val-cutoff" class="text-xs text-cyber-pink font-orbitron font-bold mt-2">2500Hz</span>
+                            </div>
+
+                            <!-- FX Resonance -->
+                            <div class="flex flex-col items-center bg-black/40 p-3 rounded-xl border border-white/5">
+                                <label class="text-[10px] font-bold text-gray-400 font-orbitron mb-2 uppercase">Resonancia</label>
+                                <input type="range" id="knob-q" min="1" max="25" value="5" step="1" class="w-full accent-cyber-purple bg-white/10 rounded-lg h-1.5 appearance-none cursor-pointer">
+                                <span id="val-q" class="text-xs text-cyber-purple font-orbitron font-bold mt-2">Q: 5</span>
+                            </div>
+
+                            <!-- FX BPM Tempo -->
+                            <div class="flex flex-col items-center bg-black/40 p-3 rounded-xl border border-white/5">
+                                <label class="text-[10px] font-bold text-gray-400 font-orbitron mb-2 uppercase">BPM Tempo</label>
+                                <input type="range" id="knob-bpm" min="90" max="160" value="128" step="1" class="w-full accent-cyber-cyan bg-white/10 rounded-lg h-1.5 appearance-none cursor-pointer">
+                                <span id="val-bpm" class="text-xs text-cyber-cyan font-orbitron font-bold mt-2">128 BPM</span>
+                            </div>
+
+                            <!-- FX Delay Feedback -->
+                            <div class="flex flex-col items-center bg-black/40 p-3 rounded-xl border border-white/5">
+                                <label class="text-[10px] font-bold text-gray-400 font-orbitron mb-2 uppercase">Eco / Delay</label>
+                                <input type="range" id="knob-delay" min="0" max="0.8" value="0.3" step="0.05" class="w-full accent-cyber-green bg-white/10 rounded-lg h-1.5 appearance-none cursor-pointer">
+                                <span id="val-delay" class="text-xs text-cyber-green font-orbitron font-bold mt-2">30%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Playback Progress and Main Controls -->
+                    <div class="space-y-4 bg-black/40 p-4 rounded-2xl border border-white/5">
+                        <!-- Custom Seekbar -->
+                        <div class="relative">
+                            <div id="seek-container" class="w-full bg-white/10 h-1.5 rounded-full cursor-pointer relative group">
+                                <div id="seek-progress" class="bg-gradient-to-r from-cyber-pink via-cyber-purple to-cyber-cyan h-full w-0 rounded-full relative">
+                                    <div class="absolute right-0 top-1/2 -translate-y-1/2 w-3.5 h-3.5 bg-white rounded-full border-2 border-cyber-pink scale-0 group-hover:scale-100 transition-transform shadow-[0_0_8px_rgba(255,0,60,0.8)]"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Primary Deck Audio Buttons -->
+                        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <!-- Volume slider control -->
+                            <div class="flex items-center space-x-2.5 w-full sm:w-36 justify-between sm:justify-start bg-white/5 p-2 rounded-xl sm:bg-transparent sm:p-0">
+                                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                                <input type="range" id="player-volume" min="0" max="1" step="0.05" value="0.80" class="w-24 accent-cyber-pink bg-white/10 rounded-lg h-1 appearance-none cursor-pointer">
+                                <span id="volume-val" class="text-[11px] font-orbitron font-bold text-gray-400">80%</span>
+                            </div>
+
+                            <!-- Play/Pause/Skip Deck -->
+                            <div class="flex items-center space-x-6">
+                                <button onclick="prevTrack()" class="text-gray-400 hover:text-cyber-pink transition-colors transform active:scale-90 p-2 border border-transparent hover:border-white/5 rounded-full" aria-label="Anterior">
+                                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6L19 18V6z"/></svg>
+                                </button>
+                                <button id="play-pause-btn" onclick="togglePlay()" class="w-14 h-14 rounded-full bg-gradient-to-r from-cyber-pink via-purple-600 to-cyber-cyan text-white font-bold flex items-center justify-center hover:scale-110 hover:shadow-neon-pink transition-all transform active:scale-95" aria-label="Reproducir o Pausar">
+                                    <svg id="play-icon" class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    <svg id="pause-icon" class="hidden w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                                </button>
+                                <button onclick="nextTrack()" class="text-gray-400 hover:text-cyber-pink transition-colors transform active:scale-90 p-2 border border-transparent hover:border-white/5 rounded-full" aria-label="Siguiente">
+                                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M4 18l10.5-6L4 6v12zm14-12v12h2V6h-2z"/></svg>
+                                </button>
+                            </div>
+
+                            <!-- Loop button -->
+                            <button id="loop-toggle" onclick="toggleLoop()" class="w-full sm:w-auto px-4 py-2 rounded-xl border border-white/10 hover:border-cyber-pink text-xs text-gray-400 transition-colors uppercase tracking-widest font-orbitron">
+                                BUCLE: OFF
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT HALF: Playlist Queue & Drag and Drop (5 Cols) -->
+                <div class="lg:col-span-5 flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center border-b border-white/10 pb-3">
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-widest font-orbitron">Cola de Reproducción</span>
+                            <span id="track-count" class="text-xs text-cyber-cyan font-orbitron font-semibold">3 Canciones</span>
+                        </div>
+
+                        <!-- Playlist Scroll Container -->
+                        <div id="playlist-queue" class="space-y-3 max-h-[300px] overflow-y-auto pr-1">
+                            <!-- Injected dynamically by JS -->
+                        </div>
+                    </div>
+
+                    <!-- MP3 File Drag & Drop Box -->
+                    <div id="drop-zone" class="border-2 border-dashed border-white/10 hover:border-cyber-pink/50 bg-black/40 p-6 rounded-2xl transition-all duration-300 text-center relative group">
+                        <input type="file" id="mp3-uploader" accept="audio/mp3, audio/mpeg" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
+                        <div class="space-y-3 pointer-events-none">
+                            <span class="inline-flex p-3 rounded-xl bg-cyber-pink/15 text-cyber-pink border border-cyber-pink/25 group-hover:scale-110 transition-transform">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
+                                </svg>
+                            </span>
+                            <h4 class="font-bold text-sm text-white group-hover:text-cyber-pink transition-colors">¿Quieres escuchar tus propios MP3?</h4>
+                            <p class="text-xs text-gray-400 leading-normal max-w-[240px] mx-auto">Arrastra archivos aquí o haz clic para subirlos directamente a la cabina.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIDEOS SHOWCASE SECTION -->
+    <section id="videos" class="py-24 relative bg-[#06060c]/85 backdrop-blur-md border-t border-white/5 z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-cyber-pink font-orbitron text-xs tracking-widest uppercase font-bold">Sesiones Audiovisuales</span>
+                <h2 class="font-orbitron text-4xl md:text-5xl font-black tracking-wide mt-2">
+                    LIVE <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-pink to-cyber-cyan">VIDEOS</span>
+                </h2>
+                <p class="text-gray-400 max-w-xl mx-auto mt-4 text-base">
+                    Mira mis sets grabados en directo desde festivales, sintetizadores modulares en mi estudio, y sesiones clandestinas subterráneas.
+                </p>
+            </div>
+
+            <!-- Video Interface Layout -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Large Video Monitor Frame -->
+                <div class="lg:col-span-2 flex flex-col space-y-4">
+                    <div class="relative w-full aspect-video bg-black rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_30px_rgba(255,0,60,0.15)]">
+                        <!-- High-tech crosshairs graphic -->
+                        <div class="absolute top-3 left-3 w-4 h-4 border-l border-t border-cyber-pink/50 pointer-events-none"></div>
+                        <div class="absolute top-3 right-3 w-4 h-4 border-r border-t border-cyber-pink/50 pointer-events-none"></div>
+                        <div class="absolute bottom-3 left-3 w-4 h-4 border-l border-b border-cyber-pink/50 pointer-events-none"></div>
+                        <div class="absolute bottom-3 right-3 w-4 h-4 border-r border-b border-cyber-pink/50 pointer-events-none"></div>
+                        
+                        <iframe id="main-video-player" class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/F77F4S9X_gU" title="DJORGELEAL Live Set" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <div class="p-4 bg-white/5 border border-white/10 rounded-xl">
+                        <h3 id="main-video-title" class="font-orbitron font-bold text-lg md:text-xl tracking-wide text-white">DJORGELEAL Live Set @ Neon Festival</h3>
+                        <p id="main-video-desc" class="text-gray-400 text-sm mt-2 leading-relaxed">Sesión oficial grabada en vivo con lo mejor del Techno e Industrial Synth modular.</p>
+                    </div>
+                </div>
+
+                <!-- Playlist Sidebar Queue -->
+                <div class="flex flex-col space-y-4 max-h-[460px] overflow-y-auto pr-2 bg-white/5 border border-white/10 rounded-2xl p-4">
+                    <span class="text-xs font-bold text-gray-400 uppercase tracking-widest font-orbitron border-b border-white/10 pb-2">Selecciona un Video</span>
+                    
+                    <!-- Item 1 (Active) -->
+                    <button onclick="changeVideo('F77F4S9X_gU', 'DJORGELEAL Live Set @ Neon Festival', 'Sesión oficial grabada en vivo con lo mejor del Techno e Industrial Synth modular.')" class="video-list-item flex items-center space-x-3 p-2.5 rounded-xl bg-cyber-card border border-cyber-pink text-left group transition-all">
+                        <div class="relative w-20 h-14 bg-cover bg-center rounded-lg overflow-hidden flex-shrink-0" style="background-image: url('https://img.youtube.com/vi/F77F4S9X_gU/0.jpg')">
+                            <div class="absolute inset-0 bg-black/50 flex items-center justify-center group-hover:bg-black/20 transition-colors">
+                                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                        <div class="overflow-hidden">
+                            <h4 class="font-bold text-xs text-white truncate">Live @ Neon Festival</h4>
+                            <p class="text-[10px] text-gray-500 mt-1 uppercase font-orbitron">Techno Set</p>
+                        </div>
+                    </button>
+
+                    <!-- Item 2 -->
+                    <button onclick="changeVideo('U33O9SioW0c', 'DJORGELEAL - Cyberpunk Synth Session', 'Estudio de composición experimental utilizando sintetizadores modulares eurorack y drum machines.')" class="video-list-item flex items-center space-x-3 p-2.5 rounded-xl bg-transparent border border-white/5 hover:border-cyber-pink/55 text-left group transition-all">
+                        <div class="relative w-20 h-14 bg-cover bg-center rounded-lg overflow-hidden flex-shrink-0" style="background-image: url('https://img.youtube.com/vi/U33O9SioW0c/0.jpg')">
+                            <div class="absolute inset-0 bg-black/50 flex items-center justify-center group-hover:bg-black/20 transition-colors">
+                                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                        <div class="overflow-hidden">
+                            <h4 class="font-bold text-xs text-white truncate">Studio Synth Session</h4>
+                            <p class="text-[10px] text-gray-500 mt-1 uppercase font-orbitron">Modular Synth</p>
+                        </div>
+                    </button>
+
+                    <!-- Item 3 -->
+                    <button onclick="changeVideo('m7M8zUu8gXk', 'DJORGELEAL - Cali Underground Boiler Session', 'Set completo de Acid Techno oscuro capturado desde la mítica cabina subterránea de Cali.')" class="video-list-item flex items-center space-x-3 p-2.5 rounded-xl bg-transparent border border-white/5 hover:border-cyber-pink/55 text-left group transition-all">
+                        <div class="relative w-20 h-14 bg-cover bg-center rounded-lg overflow-hidden flex-shrink-0" style="background-image: url('https://img.youtube.com/vi/m7M8zUu8gXk/0.jpg')">
+                            <div class="absolute inset-0 bg-black/50 flex items-center justify-center group-hover:bg-black/20 transition-colors">
+                                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                        <div class="overflow-hidden">
+                            <h4 class="font-bold text-xs text-white truncate">Cali Underground Boiler</h4>
+                            <p class="text-[10px] text-gray-500 mt-1 uppercase font-orbitron">Acid Techno</p>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOAST NOTIFICATIONS CENTER -->
+    <div id="toast-box" class="fixed bottom-6 right-6 z-50 flex flex-col space-y-2 pointer-events-none"></div>
+
+    <!-- FOOTER -->
+    <footer class="bg-cyber-dark/95 border-t border-white/5 py-12 text-center text-gray-500 text-sm z-10 relative">
+        <p class="mb-4">&copy; 2026 DJORGELEAL / DJ & Producer Oficial. Todos los derechos reservados.</p>
+        <div class="flex justify-center space-x-6">
+            <a href="https://wa.me/573188614010?text=Hola%20DJORGELEAL!%20Me%20encantó%20tu%20sitio%20web%20e%20interfaz%20de%20música,%20me%20gustaría%20saber%20más." target="_blank" rel="noopener noreferrer" class="hover:text-cyber-pink transition-colors font-semibold">Si te gusta el diseño de la página puedes contactarme y hacemos el tuyo.</a>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE SCRIPTS -->
+    <script>
+        // --- MOBILE MENU ---
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on navigate
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // --- BACKGROUND HERO PARTICLE CANVAS WAVE ---
+        const heroCanvas = document.getElementById('hero-canvas');
+        const heroCtx = heroCanvas.getContext('2d');
+
+        function resizeHeroCanvas() {
+            heroCanvas.width = heroCanvas.offsetWidth;
+            heroCanvas.height = heroCanvas.offsetHeight;
+        }
+        resizeHeroCanvas();
+        window.addEventListener('resize', resizeHeroCanvas);
+        
+        let mouseX = 0;
+        let mouseY = 0;
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateHero() {
+            heroCtx.clearRect(0, 0, heroCanvas.width, heroCanvas.height);
+            heroCtx.lineWidth = 1.2;
+            
+            const points = 60;
+            const waveWidth = heroCanvas.width;
+            
+            for(let layer = 0; layer < 5; layer++) {
+                heroCtx.beginPath();
+                const opacity = (0.28 - (layer * 0.05)).toFixed(2);
+                
+                // Color spectrum shifts subtly based on mouse pointer coordinates
+                const r = Math.floor(255 - (mouseX / window.innerWidth) * 100);
+                const g = Math.floor((mouseY / window.innerHeight) * 50);
+                const b = Math.floor(60 + (mouseX / window.innerWidth) * 150);
+                
+                heroCtx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${opacity})`;
+                
+                for(let i = 0; i <= points; i++) {
+                    const x = (i / points) * waveWidth;
+                    const frequency = 0.007 + (layer * 0.0015);
+                    const amplitude = 65 - (layer * 9);
+                    
+                    // Added mouse displacement factor to the wave calculation
+                    const mouseDistanceX = Math.abs(x - mouseX);
+                    const hoverBend = mouseDistanceX < 200 ? (200 - mouseDistanceX) * 0.15 : 0;
+                    
+                    const y = (heroCanvas.height / 2.2) + 
+                              Math.sin(x * frequency + (Date.now() * 0.0012)) * amplitude + 
+                              (Math.cos(x * 0.02 + (Date.now() * 0.0008)) * hoverBend);
+                    
+                    if(i === 0) heroCtx.moveTo(x, y);
+                    else heroCtx.lineTo(x, y);
+                }
+                heroCtx.stroke();
+            }
+            requestAnimationFrame(animateHero);
+        }
+        animateHero();
+
+        // --- CUSTOM TOAST SYSTEM ---
+        function showToast(message, type = 'pink') {
+            const container = document.getElementById('toast-box');
+            const toast = document.createElement('div');
+            
+            let colorClasses = 'border-cyber-pink/50 text-cyber-pink shadow-[0_0_15px_rgba(255,0,60,0.25)]';
+            if (type === 'cyan') colorClasses = 'border-cyber-cyan/50 text-cyber-cyan shadow-[0_0_15px_rgba(0,242,254,0.25)]';
+            if (type === 'green') colorClasses = 'border-cyber-green/50 text-cyber-green shadow-[0_0_15px_rgba(57,255,20,0.25)]';
+            
+            toast.className = `p-4 rounded-xl text-white font-semibold text-xs tracking-wider uppercase font-orbitron flex items-center justify-between border w-80 translate-y-10 opacity-0 transition-all duration-300 pointer-events-auto bg-[#0a0a14]/95 ${colorClasses}`;
+            
+            toast.innerHTML = `
+                <div class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-current animate-ping"></span>
+                    <span>${message}</span>
+                </div>
+                <button class="ml-4 font-bold text-gray-500 hover:text-white focus:outline-none">&times;</button>
+            `;
+            
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-y-10', 'opacity-0');
+            }, 10);
+
+            const removeToast = () => {
+                toast.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            };
+
+            const timer = setTimeout(removeToast, 4000);
+            
+            toast.querySelector('button').addEventListener('click', () => {
+                clearTimeout(timer);
+                removeToast();
+            });
+        }
+
+        // --- YOUTUBE GALLERY HANDLER ---
+        function changeVideo(youtubeId, title, desc) {
+            const player = document.getElementById('main-video-player');
+            const titleEl = document.getElementById('main-video-title');
+            const descEl = document.getElementById('main-video-desc');
+            
+            player.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1`;
+            titleEl.innerText = title;
+            descEl.innerText = desc;
+            
+            // Adjust active/inactive styles
+            const items = document.querySelectorAll('.video-list-item');
+            items.forEach(item => {
+                if (item.getAttribute('onclick').includes(youtubeId)) {
+                    item.classList.add('border-cyber-pink', 'bg-cyber-card');
+                    item.classList.remove('border-white/5', 'bg-transparent', 'hover:border-cyber-pink/55');
+                } else {
+                    item.classList.remove('border-cyber-pink', 'bg-cyber-card');
+                    item.classList.add('border-white/5', 'bg-transparent', 'hover:border-cyber-pink/55');
+                }
+            });
+            showToast(`VIDEO EN PANTALLA: ${title.substring(0,25)}...`, 'cyan');
+        }
+
+        // --- HIGH-FIDELITY WEB AUDIO ENGINE & SEQUENCER ---
+        let audioCtx = null;
+        let masterGain = null;
+        let analyser = null;
+        let visualizerDataArray = null;
+        let isPlaying = false;
+        let isLooping = false;
+        let playInterval = null;
+        let activeVisualizerMode = 'bars'; // bars, ring, wave
+
+        // Synth FX Nodes
+        let lowpassFilter = null;
+        let delayNode = null;
+        let delayFeedback = null;
+
+        let playlistTracks = [
+            { id: 1, title: "Neon Awakening (Demo Synth)", genre: "Acid Techno", src: "synth-techno", duration: 180 },
+            { id: 2, title: "Cybernetic Drift (Demo Synth)", genre: "Minimal Tech", src: "synth-minimal", duration: 120 },
+            { id: 3, title: "Solar Flares (Demo Synth)", genre: "Hard Industrial", src: "synth-industrial", duration: 240 }
+        ];
+        
+        let activeTrackIndex = 0;
+        let htmlAudioElement = null;
+        let trackPlaybackSeconds = 0;
+
+        const playerCanvas = document.getElementById('music-visualizer');
+        const playerCanvasCtx = playerCanvas.getContext('2d');
+
+        function initAudioEngine() {
+            if (audioCtx) return;
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            audioCtx = new AudioContext();
+            
+            // Nodes configuration
+            masterGain = audioCtx.createGain();
+            const volumeSlider = document.getElementById('player-volume');
+            masterGain.gain.setValueAtTime(parseFloat(volumeSlider.value), audioCtx.currentTime);
+            
+            // FX filter node configuration
+            lowpassFilter = audioCtx.createBiquadFilter();
+            lowpassFilter.type = 'lowpass';
+            lowpassFilter.frequency.setValueAtTime(parseFloat(document.getElementById('knob-cutoff').value), audioCtx.currentTime);
+            lowpassFilter.Q.setValueAtTime(parseFloat(document.getElementById('knob-q').value), audioCtx.currentTime);
+
+            // High-fidelity delay configuration
+            delayNode = audioCtx.createDelay(1.0);
+            delayFeedback = audioCtx.createGain();
+            delayNode.delayTime.setValueAtTime(0.33, audioCtx.currentTime);
+            delayFeedback.gain.setValueAtTime(parseFloat(document.getElementById('knob-delay').value), audioCtx.currentTime);
+
+            // Connect FX nodes routing path: Signal -> Filter -> Delay -> Master
+            lowpassFilter.connect(delayNode);
+            delayNode.connect(delayFeedback);
+            delayFeedback.connect(delayNode); // feedback loop
+            
+            // Direct and delayed parallel sum
+            lowpassFilter.connect(masterGain);
+            delayNode.connect(masterGain);
+
+            // Connect analyzer
+            analyser = audioCtx.createAnalyser();
+            analyser.fftSize = 128;
+            masterGain.connect(analyser);
+            masterGain.connect(audioCtx.destination);
+            
+            visualizerDataArray = new Uint8Array(analyser.frequencyBinCount);
+            
+            // Events for Knobs / Parameters
+            document.getElementById('knob-cutoff').addEventListener('input', (e) => {
+                const val = parseFloat(e.target.value);
+                document.getElementById('val-cutoff').innerText = `${val}Hz`;
+                if (lowpassFilter) lowpassFilter.frequency.setValueAtTime(val, audioCtx.currentTime);
+            });
+
+            document.getElementById('knob-q').addEventListener('input', (e) => {
+                const val = parseFloat(e.target.value);
+                document.getElementById('val-q').innerText = `Q: ${val}`;
+                if (lowpassFilter) lowpassFilter.Q.setValueAtTime(val, audioCtx.currentTime);
+            });
+
+            document.getElementById('knob-bpm').addEventListener('input', (e) => {
+                const val = parseInt(e.target.value);
+                document.getElementById('val-bpm').innerText = `${val} BPM`;
+                if (isPlaying) {
+                    // Update synthesizer beat tempo immediately
+                    startSynthSequencer(playlistTracks[activeTrackIndex].src);
+                }
+            });
+
+            document.getElementById('knob-delay').addEventListener('input', (e) => {
+                const val = parseFloat(e.target.value);
+                document.getElementById('val-delay').innerText = `${Math.round(val * 100)}%`;
+                if (delayFeedback) delayFeedback.gain.setValueAtTime(val, audioCtx.currentTime);
+            });
+
+            volumeSlider.addEventListener('input', (e) => {
+                const val = parseFloat(e.target.value);
+                document.getElementById('volume-val').innerText = `${Math.round(val * 100)}%`;
+                if (masterGain) masterGain.gain.setValueAtTime(val, audioCtx.currentTime);
+            });
+
+            drawPlayerVisualizer();
+        }
+
+        function renderPlaylist() {
+            const queue = document.getElementById('playlist-queue');
+            document.getElementById('track-count').innerText = `${playlistTracks.length} Canciones`;
+            queue.innerHTML = '';
+            
+            playlistTracks.forEach((track, idx) => {
+                const isActive = idx === activeTrackIndex;
+                const item = document.createElement('button');
+                item.className = `w-full flex items-center justify-between p-3 rounded-xl transition-all border text-left ${
+                    isActive 
+                        ? 'bg-cyber-pink/15 border-cyber-pink text-white shadow-neon-pink/10' 
+                        : 'bg-black/20 border-white/5 hover:border-white/10 text-gray-400 hover:text-white'
+                }`;
+                item.onclick = () => selectTrack(idx);
+                
+                item.innerHTML = `
+                    <div class="flex items-center space-x-3 overflow-hidden">
+                        <span class="font-orbitron font-bold text-[10px] ${isActive ? 'text-cyber-pink' : 'text-gray-600'}">0${idx+1}</span>
+                        <div class="truncate">
+                            <h4 class="font-bold text-xs text-white truncate">${track.title}</h4>
+                            <span class="text-[9px] uppercase tracking-wider text-gray-500 font-semibold">${track.genre}</span>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-orbitron text-gray-500 flex-shrink-0">${formatTime(track.duration)}</span>
+                `;
+                queue.appendChild(item);
+            });
+        }
+
+        function loadTrack(index) {
+            stopCurrentSynthesizer();
+            activeTrackIndex = index;
+            const track = playlistTracks[activeTrackIndex];
+            
+            document.getElementById('player-title').innerText = track.title;
+            document.getElementById('player-genre').innerText = track.genre;
+            document.getElementById('player-duration').innerText = formatTime(track.duration);
+            document.getElementById('player-time').innerText = "0:00";
+            
+            trackPlaybackSeconds = 0;
+            updateProgressBar();
+            
+            if (track.isLocal) {
+                if (htmlAudioElement) {
+                    htmlAudioElement.pause();
+                    htmlAudioElement = null;
+                }
+                htmlAudioElement = new Audio(track.src);
+                htmlAudioElement.loop = isLooping;
+                
+                if (audioCtx) {
+                    const source = audioCtx.createMediaElementSource(htmlAudioElement);
+                    source.connect(lowpassFilter);
+                }
+            }
+            renderPlaylist();
+        }
+
+        function selectTrack(index) {
+            loadTrack(index);
+            if (isPlaying) {
+                play();
+            } else {
+                togglePlay();
+            }
+        }
+
+        function togglePlay() {
+            initAudioEngine();
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            const playIcon = document.getElementById('play-icon');
+            const pauseIcon = document.getElementById('pause-icon');
+            const deck = document.getElementById('hologram-deck');
+
+            if (isPlaying) {
+                pause();
+                playIcon.classList.remove('hidden');
+                pauseIcon.classList.add('hidden');
+                deck.classList.remove('animate-[spin_4s_linear_infinite]');
+                deck.style.borderColor = 'rgba(255, 0, 60, 0.3)';
+            } else {
+                play();
+                playIcon.classList.add('hidden');
+                pauseIcon.classList.remove('hidden');
+                deck.classList.add('animate-[spin_4s_linear_infinite]');
+                deck.style.borderColor = 'rgba(0, 242, 254, 0.6)';
+            }
+        }
+
+        function play() {
+            isPlaying = true;
+            const track = playlistTracks[activeTrackIndex];
+            
+            if (track.isLocal && htmlAudioElement) {
+                htmlAudioElement.play();
+                playInterval = setInterval(() => {
+                    trackPlaybackSeconds = Math.floor(htmlAudioElement.currentTime);
+                    updateProgressBar();
+                    if (htmlAudioElement.ended) {
+                        nextTrack();
+                    }
+                }, 500);
+            } else {
+                startSynthSequencer(track.src);
+                playInterval = setInterval(() => {
+                    trackPlaybackSeconds++;
+                    updateProgressBar();
+                    if (trackPlaybackSeconds >= track.duration) {
+                        if (isLooping) {
+                            trackPlaybackSeconds = 0;
+                        } else {
+                            nextTrack();
+                        }
+                    }
+                }, 1000);
+            }
+        }
+
+        function pause() {
+            isPlaying = false;
+            clearInterval(playInterval);
+            const track = playlistTracks[activeTrackIndex];
+            if (track.isLocal && htmlAudioElement) {
+                htmlAudioElement.pause();
+            } else {
+                stopCurrentSynthesizer();
+            }
+        }
+
+        function nextTrack() {
+            let nextIdx = activeTrackIndex + 1;
+            if (nextIdx >= playlistTracks.length) {
+                nextIdx = 0;
+            }
+            selectTrack(nextIdx);
+        }
+
+        function prevTrack() {
+            let prevIdx = activeTrackIndex - 1;
+            if (prevIdx < 0) {
+                prevIdx = playlistTracks.length - 1;
+            }
+            selectTrack(prevIdx);
+        }
+
+        function toggleLoop() {
+            isLooping = !isLooping;
+            const btn = document.getElementById('loop-toggle');
+            if (isLooping) {
+                btn.innerText = "BUCLE: ON";
+                btn.classList.add('border-cyber-pink', 'text-cyber-pink');
+                if (htmlAudioElement) htmlAudioElement.loop = true;
+            } else {
+                btn.innerText = "BUCLE: OFF";
+                btn.classList.remove('border-cyber-pink', 'text-cyber-pink');
+                if (htmlAudioElement) htmlAudioElement.loop = false;
+            }
+            showToast(isLooping ? "🔁 BUCLE ACTIVADO" : "➡️ BUCLE DESACTIVADO", 'pink');
+        }
+
+        function updateProgressBar() {
+            const track = playlistTracks[activeTrackIndex];
+            const pct = (trackPlaybackSeconds / track.duration) * 100;
+            document.getElementById('seek-progress').style.width = `${pct}%`;
+            document.getElementById('player-time').innerText = formatTime(trackPlaybackSeconds);
+        }
+
+        // --- SEQUENCER ENGINE (Generates beats dynamically) ---
+        let synthScheduler = null;
+        let synthBeatStep = 0;
+
+        function startSynthSequencer(style) {
+            stopCurrentSynthesizer();
+            
+            // Adjust step interval dynamic calculation based on BPM
+            const currentBpm = parseInt(document.getElementById('knob-bpm').value);
+            const stepInterval = (60 / currentBpm / 4) * 1000; // 16th note steps
+
+            synthScheduler = setInterval(() => {
+                if (!audioCtx) return;
+                const now = audioCtx.currentTime;
+                
+                // Track 1: Acid Techno Generator Pattern
+                if (style === 'synth-techno') {
+                    if (synthBeatStep % 4 === 0) {
+                        const osc = audioCtx.createOscillator();
+                        const gain = audioCtx.createGain();
+                        osc.connect(gain);
+                        gain.connect(lowpassFilter);
+                        
+                        osc.frequency.setValueAtTime(140, now);
+                        osc.frequency.exponentialRampToValueAtTime(35, now + 0.25);
+                        
+                        gain.gain.setValueAtTime(1.0, now);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.28);
+                        
+                        osc.start(now);
+                        osc.stop(now + 0.3);
+                    }
+
+                    if (synthBeatStep % 4 === 2) {
+                        const osc = audioCtx.createOscillator();
+                        const filter = audioCtx.createBiquadFilter();
+                        const gain = audioCtx.createGain();
+                        
+                        osc.type = 'triangle';
+                        osc.frequency.setValueAtTime(12000, now);
+                        
+                        filter.type = 'highpass';
+                        filter.frequency.setValueAtTime(6000, now);
+                        
+                        gain.gain.setValueAtTime(0.08, now);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+                        
+                        osc.connect(filter);
+                        filter.connect(gain);
+                        gain.connect(lowpassFilter);
+                        
+                        osc.start(now);
+                        osc.stop(now + 0.15);
+                    }
+
+                    if (synthBeatStep % 2 !== 0) {
+                        const osc = audioCtx.createOscillator();
+                        const gain = audioCtx.createGain();
+                        osc.type = 'sawtooth';
+                        
+                        const notes = [55, 65.4, 73.4, 82.4, 98.0, 110.0];
+                        const randomNote = notes[Math.floor(Math.sin(synthBeatStep) * 3 + 3) % notes.length];
+                        
+                        osc.frequency.setValueAtTime(randomNote, now);
+                        osc.frequency.exponentialRampToValueAtTime(randomNote * 2, now + 0.15);
+
+                        gain.gain.setValueAtTime(0.2, now);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+
+                        osc.connect(gain);
+                        gain.connect(lowpassFilter);
+
+                        osc.start(now);
+                        osc.stop(now + 0.2);
+                    }
+                }
+
+                // Track 2: Minimal Tech Sequence
+                else if (style === 'synth-minimal') {
+                    if (synthBeatStep % 4 === 0) {
+                        const osc = audioCtx.createOscillator();
+                        const gain = audioCtx.createGain();
+                        osc.connect(gain);
+                        gain.connect(lowpassFilter);
+                        
+                        osc.frequency.setValueAtTime(90, now);
+                        osc.frequency.exponentialRampToValueAtTime(45, now + 0.15);
+                        
+                        gain.gain.setValueAtTime(0.8, now);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+                        
+                        osc.start(now);
+                        osc.stop(now + 0.2);
+                    }
+
+                    if (synthBeatStep % 4 === 3) {
+                        const osc = audioCtx.createOscillator();
+                        const gain = audioCtx.createGain();
+                        osc.type = 'sine';
+                        osc.frequency.setValueAtTime(1400, now);
+                        
+                        gain.gain.setValueAtTime(0.05, now);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
+                        
+                        osc.connect(gain);
+                        gain.connect(lowpassFilter);
+                        osc.start(now);
+                        osc.stop(now + 0.05);
+                    }
+                }
+
+                // Track 3: Hard Industrial Synthesizer Pattern
+                else {
+                    if (synthBeatStep % 4 === 0) {
+                        const osc = audioCtx.createOscillator();
+                        const waveshaper = audioCtx.createWaveShaper();
+                        const gain = audioCtx.createGain();
+                        
+                        osc.type = 'sawtooth';
+                        osc.frequency.setValueAtTime(160, now);
+                        osc.frequency.exponentialRampToValueAtTime(25, now + 0.35);
+
+                        const makeDistortionCurve = (amount = 20) => {
+                            const k = typeof amount === 'number' ? amount : 50;
+                            const n_samples = 44100;
+                            const curve = new Float32Array(n_samples);
+                            const deg = Math.PI / 180;
+                            for (let i = 0; i < n_samples; ++i) {
+                                const x = (i * 2) / n_samples - 1;
+                                curve[i] = ((3 + k) * x * 20 * deg) / (Math.PI + k * Math.abs(x));
+                            }
+                            return curve;
+                        };
+                        waveshaper.curve = makeDistortionCurve(50);
+                        waveshaper.oversample = '4x';
+
+                        gain.gain.setValueAtTime(0.45, now);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.38);
+
+                        osc.connect(waveshaper);
+                        waveshaper.connect(gain);
+                        gain.connect(lowpassFilter);
+
+                        osc.start(now);
+                        osc.stop(now + 0.4);
+                    }
+
+                    if (synthBeatStep % 8 === 6) {
+                        const osc = audioCtx.createOscillator();
+                        const gain = audioCtx.createGain();
+                        osc.type = 'square';
+                        osc.frequency.setValueAtTime(450, now);
+                        osc.frequency.linearRampToValueAtTime(80, now + 0.15);
+
+                        gain.gain.setValueAtTime(0.08, now);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
+
+                        osc.connect(gain);
+                        gain.connect(lowpassFilter);
+                        osc.start(now);
+                        osc.stop(now + 0.25);
+                    }
+                }
+
+                synthBeatStep = (synthBeatStep + 1) % 16;
+            }, stepInterval);
+        }
+
+        function stopCurrentSynthesizer() {
+            if (synthScheduler) {
+                clearInterval(synthScheduler);
+                synthScheduler = null;
+            }
+        }
+
+        function formatTime(seconds) {
+            const m = Math.floor(seconds / 60);
+            const s = Math.floor(seconds % 60);
+            return `${m}:${s < 10 ? '0' : ''}${s}`;
+        }
+
+        // --- SPECTROMETER CANVAS RENDERER ---
+        function setVisualizerMode(mode) {
+            activeVisualizerMode = mode;
+            
+            // Adjust buttons active classes
+            const btns = ['bars', 'ring', 'wave'];
+            btns.forEach(b => {
+                const btn = document.getElementById(`v-btn-${b}`);
+                if (b === mode) {
+                    btn.className = 'px-2 py-0.5 text-[9px] font-orbitron uppercase tracking-wider rounded bg-cyber-pink text-white transition-colors';
+                } else {
+                    btn.className = 'px-2 py-0.5 text-[9px] font-orbitron uppercase tracking-wider rounded text-gray-400 hover:text-white transition-colors';
+                }
+            });
+            showToast(`VISUALIZADOR: MODO ${mode.toUpperCase()}`, 'cyan');
+        }
+
+        function drawPlayerVisualizer() {
+            if (!analyser) return;
+            requestAnimationFrame(drawPlayerVisualizer);
+            
+            analyser.getByteFrequencyData(visualizerDataArray);
+            
+            playerCanvas.width = playerCanvas.offsetWidth;
+            playerCanvas.height = playerCanvas.offsetHeight;
+            
+            const w = playerCanvas.width;
+            const h = playerCanvas.height;
+            
+            playerCanvasCtx.fillStyle = '#05050a';
+            playerCanvasCtx.fillRect(0, 0, w, h);
+            
+            const barCount = visualizerDataArray.length;
+
+            if (activeVisualizerMode === 'bars') {
+                const barWidth = (w / barCount) * 1.5;
+                
+                for (let i = 0; i < barCount; i++) {
+                    const val = visualizerDataArray[i];
+                    const pct = val / 255;
+                    const barHeight = h * pct * 0.9;
+                    
+                    const grad = playerCanvasCtx.createLinearGradient(0, h - barHeight, 0, h);
+                    grad.addColorStop(0, '#ff003c'); // Neon Pink
+                    grad.addColorStop(0.5, '#7b2cbf'); // Neon Purple
+                    grad.addColorStop(1, '#00f2fe'); // Neon Cyan
+                    
+                    playerCanvasCtx.fillStyle = grad;
+                    playerCanvasCtx.fillRect(i * barWidth, h - barHeight, barWidth - 3, barHeight);
+                }
+            }
+            else if (activeVisualizerMode === 'ring') {
+                const centerX = w / 2;
+                const centerY = h / 2;
+                const baseRadius = Math.min(centerX, centerY) * 0.45;
+                
+                playerCanvasCtx.beginPath();
+                playerCanvasCtx.arc(centerX, centerY, baseRadius, 0, Math.PI * 2);
+                playerCanvasCtx.strokeStyle = 'rgba(255,255,255,0.05)';
+                playerCanvasCtx.lineWidth = 1;
+                playerCanvasCtx.stroke();
+
+                for (let i = 0; i < barCount; i++) {
+                    const val = visualizerDataArray[i];
+                    const pct = val / 255;
+                    const peakLength = baseRadius * pct * 0.9;
+                    
+                    const angle = (i / barCount) * Math.PI * 2;
+                    const startX = centerX + Math.cos(angle) * baseRadius;
+                    const startY = centerY + Math.sin(angle) * baseRadius;
+                    const endX = centerX + Math.cos(angle) * (baseRadius + peakLength);
+                    const endY = centerY + Math.sin(angle) * (baseRadius + peakLength);
+                    
+                    const grad = playerCanvasCtx.createLinearGradient(startX, startY, endX, endY);
+                    grad.addColorStop(0, '#00f2fe');
+                    grad.addColorStop(1, '#ff003c');
+
+                    playerCanvasCtx.beginPath();
+                    playerCanvasCtx.moveTo(startX, startY);
+                    playerCanvasCtx.lineTo(endX, endY);
+                    playerCanvasCtx.strokeStyle = grad;
+                    playerCanvasCtx.lineWidth = 4;
+                    playerCanvasCtx.stroke();
+                }
+            }
+            else if (activeVisualizerMode === 'wave') {
+                playerCanvasCtx.beginPath();
+                playerCanvasCtx.lineWidth = 3;
+                playerCanvasCtx.strokeStyle = '#39ff14'; // Bright matrix green
+                
+                const sliceWidth = w / barCount;
+                let x = 0;
+                
+                for (let i = 0; i < barCount; i++) {
+                    const val = visualizerDataArray[i];
+                    const v = val / 128.0;
+                    const y = (v * h) / 2;
+                    
+                    if (i === 0) {
+                        playerCanvasCtx.moveTo(x, y);
+                    } else {
+                        playerCanvasCtx.lineTo(x, y);
+                    }
+                    
+                    x += sliceWidth;
+                }
+                
+                playerCanvasCtx.lineTo(w, h / 2);
+                playerCanvasCtx.stroke();
+            }
+        }
+
+        // --- Drag and Drop Logic ---
+        const dropZone = document.getElementById('drop-zone');
+        const mp3Uploader = document.getElementById('mp3-uploader');
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropZone.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                dropZone.classList.add('border-cyber-pink');
+            }, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, (e) => {
+                e.preventDefault();
+                dropZone.classList.remove('border-cyber-pink');
+            }, false);
+        });
+
+        mp3Uploader.addEventListener('change', handleAudioUpload);
+
+        function handleAudioUpload(e) {
+            const file = e.target.files[0];
+            if (file) {
+                initAudioEngine();
+                const fileUrl = URL.createObjectURL(file);
+                
+                const tempAudio = new Audio(fileUrl);
+                tempAudio.addEventListener('loadedmetadata', () => {
+                    const newTrack = {
+                        id: playlistTracks.length + 1,
+                        title: file.name.replace(/\.[^/.]+$/, ""),
+                        genre: "Subida Local",
+                        src: fileUrl,
+                        duration: tempAudio.duration || 180,
+                        isLocal: true
+                    };
+                    playlistTracks.push(newTrack);
+                    activeTrackIndex = playlistTracks.length - 1;
+                    loadTrack(activeTrackIndex);
+                    togglePlay();
+                    showToast("🎵 ARCHIVO MP3 CARGADO CON ÉXITO!", "green");
+                });
+            }
+        }
+
+        // Initialize state
+        loadTrack(0);
+
+    </script>
+</body>
+</html>
