@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJORGELEAL </title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            dark: '#030306',
+                            card: '#0a0a12',
+                            panel: '#0e0e1a',
+                            cyan: '#00f2fe',
+                            pink: '#ff003c',
+                            purple: '#7b2cbf',
+                            green: '#39ff14',
+                            amber: '#ffb703'
+                        }
+                    },
+                    boxShadow: {
+                        'neon-cyan': '0 0 15px rgba(0, 242, 254, 0.4)',
+                        'neon-pink': '0 0 20px rgba(255, 0, 60, 0.6)',
+                        'neon-purple': '0 0 15px rgba(123, 44, 191, 0.4)',
+                        'neon-green': '0 0 15px rgba(57, 255, 20, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Importamos Orbitron, Rajdhani y la fuente Techno Industrial: Unbounded */
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;600;700&family=Unbounded:wght@800;900&display=swap');
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: #030306;
+            overflow-x: hidden;
+        }
+
+        .font-orbitron {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* Nueva clase para el Logotipo con corte de tipografía electrónica premium */
+        .font-brand-logo {
+            font-family: 'Unbounded', sans-serif;
+            font-weight: 900;
+        }
+
+        /* Barra de desplazamiento personalizada al estilo Cyberpunk */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #030306;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #ff003c;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7b2cbf;
+        }
+
+        /* Efecto Glassmorphism */
+        .glass-panel {
+            background: rgba(10, 10, 18, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-panel-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-panel-hover:hover {
+            border-color: rgba(255, 0, 60, 0.3);
+            box-shadow: 0 10px 30px -10px rgba(255, 0, 60, 0.15);
+        }
+
+        /* Cuadrícula Cyber Scanline */
+        .cyber-grid::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 60, 0.03), rgba(0, 242, 254, 0.01), rgba(0, 0, 0, 0));
+            z-index: 2;
+            background-size: 100% 4px, 6px 100%;
+            pointer-events: none;
+        }
+
+        /* Animación de pulso Cyber */
+        @keyframes cyber-pulse {
+
+            0%,
+            100% {
+                opacity: 0.8;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.02);
+            }
+        }
+
+        .animate-cyber-pulse {
+            animation: cyber-pulse 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="text-white selection:bg-cyber-pink selection:text-white cyber-grid relative">
+
+    <!-- FONDO DE PANTALLA INMERSIVO -->
+    <div class="fixed inset-0 w-full h-full bg-cover bg-center bg-no-repeat pointer-events-none select-none z-0 opacity-25 md:opacity-35 mix-blend-lighten transition-opacity duration-1000"
+        style="background-image: url('https://djorgeleal.github.io/landingpage/flyer.png'); background-attachment: fixed;"
+        id="global-static-portrait">
+    </div>
+
+    <!-- Gradientes de oscurecimiento perimetral para asegurar una legibilidad perfecta -->
+    <div
+        class="fixed inset-0 bg-gradient-to-t from-cyber-dark via-transparent to-cyber-dark pointer-events-none z-[1] opacity-90">
+    </div>
+    <div
+        class="fixed inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0)_10%,rgba(3,3,6,0.9)_90%)] pointer-events-none z-[1]">
+    </div>
+
+    <!-- HEADER / NAVEGACIÓN -->
+    <header
+        class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-cyber-dark/85 backdrop-blur-md border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+            <!-- CONTENEDOR DE MARCA (LOGO + TEXTO EN UNBOUNDED TECHNO FONT) -->
+            <a href="#" class="flex items-center gap-3 group">
+                <!-- LOGO DE IMAGEN -->
+                <img src="https://via.placeholder.com/120x40/030306/00f2fe?text=LOGO" alt="Logo DJORGELEAL"
+                    class="h-8 md:h-10 w-auto object-contain transition-all duration-300 group-hover:scale-105"
+                    onerror="this.style.display='none';">
+
+                <!-- TEXTO DEL NOMBRE ESTILO TECHNO UNDERGROUND:
+                     - Se aplica la clase .font-brand-logo (Unbounded 900)
+                     - Se añade 'tracking-tighter' para unir las letras simulando una insignia compacta.
+                     - Se inclina con 'skew-x-[-10deg]' para simular velocidad/fuerza.
+                     - Se le aplica un sutil text-shadow de neón rosa/cyan.
+                -->
+                <span
+                    class="font-brand-logo text-lg md:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-cyber-pink transition-all duration-300 group-hover:text-cyber-cyan inline-block transform skew-x-[-10deg] tracking-tighter uppercase select-none"
+                    style="text-shadow: 0 0 8px rgba(255, 0, 60, 0.2);">
+                    djorgeleal
+                </span>
+            </a>
+
+            <!-- Menú de escritorio -->
+            <nav class="hidden md:flex space-x-8 text-sm font-semibold tracking-wider uppercase">
+                <a href="#home" class="hover:text-cyber-pink transition-colors relative py-1 group">
+                    Inicio
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyber-pink transition-all group-hover:w-full"></span>
+                </a>
+                <a href="#music" class="hover:text-cyber-pink transition-colors relative py-1 group">
+                    Música
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-cyber-pink transition-all group-hover:w-full"></span>
+                </a>
+
+            </nav>
+
+            <!-- Botón de Menú Móvil -->
+            <button id="menu-btn" class="md:hidden text-white focus:outline-none p-1 border border-white/10 rounded"
+                aria-label="Menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Menú Móvil Desplegable -->
+        <div id="mobile-menu" class="hidden md:hidden bg-cyber-dark/95 border-b border-white/10 px-6 py-6 space-y-4">
+            <a href="#home" class="block text-lg hover:text-cyber-pink py-2 border-b border-white/5">Inicio</a>
+            <a href="#music" class="block text-lg hover:text-cyber-pink py-2 border-b border-white/5">Música</a>
+
+        </div>
+    </header>
+
+    <!-- HERO SECTION (Symmetric Centered Layout) -->
+    <section id="home" class="relative min-h-screen flex items-center pt-20 overflow-hidden bg-transparent z-10">
+        <!-- Onda interactiva en Canvas de fondo -->
+        <canvas id="hero-canvas" class="absolute inset-0 w-full h-full opacity-40 z-20 pointer-events-none"></canvas>
+
+        <div id="fallback-grid-hero"
+            class="absolute inset-0 z-0 opacity-20 bg-[linear-gradient(rgba(255,0,60,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,0,60,0.05)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none">
+        </div>
+
+        <!-- Luces de neón de fondo -->
+        <div
+            class="absolute top-1/4 left-1/4 w-80 h-80 bg-cyber-pink/20 rounded-full blur-[120px] pointer-events-none z-10">
+        </div>
+        <div
+            class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-cyber-cyan/15 rounded-full blur-[120px] pointer-events-none z-10">
+        </div>
+
+        <div
+            class="relative z-30 max-w-7xl mx-auto px-6 w-full py-20 flex flex-col items-center justify-center text-center">
+            <div class="max-w-2xl text-center flex flex-col items-center">
+                <span
+                    class="inline-flex items-center gap-2 px-4 py-1.5 bg-cyber-pink/20 border border-cyber-pink/40 text-white rounded-full text-xs uppercase font-semibold tracking-widest mb-6 animate-cyber-pulse">
+                    <span class="w-2.5 h-2.5 rounded-full bg-cyber-pink animate-ping"></span>
+                    Live Set en TikTok
+                </span>
+
+                <h1
+                    class="font-orbitron text-4xl sm:text-6xl md:text-8xl font-extrabold tracking-tighter mb-10 leading-none text-white">
+                    SIENTE LA <br>
+                    <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-pink via-purple-600 to-cyber-cyan">
+                        MÚSICA
+                    </span>
+                </h1>
+
+                <div class="flex flex-wrap justify-center gap-4 w-full">
+                    <!-- Botón de TikTok -->
+                    <a href="https://www.tiktok.com/@djorgeleal" target="_blank" rel="noopener noreferrer"
+                        class="group flex items-center gap-3 px-6 py-3.5 bg-black/40 hover:bg-black/70 border border-cyber-cyan/30 hover:border-cyber-cyan rounded-xl text-sm font-orbitron font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 hover:shadow-neon-cyan text-white">
+                        <svg class="w-5 h-5 fill-current text-cyber-cyan group-hover:animate-pulse" viewBox="0 0 24 24">
+                            <path
+                                d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.02 1.63 4.18 1.15 1.14 2.76 1.77 4.38 1.83v3.91c-1.89-.06-3.72-.78-5.11-2.07v7.54c0 1.08-.2 2.16-.62 3.16-.83 2.13-2.61 3.82-4.78 4.41-1.28.37-2.64.44-3.95.21-2.61-.41-4.9-2.22-5.78-4.72-.45-1.2-.55-2.5-.28-3.75.52-2.19 2-4.05 3.99-5 1.25-.63 2.66-.9 4.06-.82v3.9c-.83-.09-1.68.12-2.39.56-.99.59-1.61 1.66-1.63 2.82-.03 1.09.52 2.14 1.45 2.69.75.46 1.65.57 2.49.33.9-.23 1.64-.94 1.94-1.83.18-.49.23-1.02.21-1.54V0z" />
+                        </svg>
+                        TikTok
+                    </a>
+
+                    <!-- Botón de Instagram -->
+                    <a href="https://www.instagram.com/djorgeleal" target="_blank" rel="noopener noreferrer"
+                        class="group flex items-center gap-3 px-6 py-3.5 bg-black/40 hover:bg-black/70 border border-cyber-pink/30 hover:border-cyber-pink rounded-xl text-sm font-orbitron font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 hover:shadow-neon-pink text-white">
+                        <svg class="w-5 h-5 stroke-current fill-none text-cyber-pink group-hover:animate-pulse"
+                            stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                        Instagram
+                    </a>
+
+                    <!-- Botón de SoundCloud -->
+                    <a href="https://soundcloud.com/djorgeleal" target="_blank" rel="noopener noreferrer"
+                        class="group flex items-center gap-3 px-6 py-3.5 bg-black/40 hover:bg-black/70 border border-amber-500/30 hover:border-amber-500 rounded-xl text-sm font-orbitron font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 hover:shadow-[0_0_15px_rgba(245,158,11,0.4)] text-white">
+                        <svg class="w-5 h-5 fill-current text-amber-500 group-hover:animate-pulse" viewBox="0 0 24 24">
+                            <path
+                                d="M11.56 10.95c0-.33.23-.6.52-.6s.52.27.52.6v5.27c0 .33-.23.6-.52.6s-.52-.27-.52-.6v-5.27zm-1.46-.86c0-.33.23-.6.51-.6s.52.27.52.6v6.13c0 .33-.23.6-.52.6s-.51-.27-.51-.6v-6.13zm-1.46.9c0-.33.23-.6.52-.6s.52.27.52.6v5.23c0 .33-.23.6-.52.6s-.52-.27-.52-.6V10.99zm-1.46.85c0-.33.23-.6.52-.6s.52.27.52.6v4.38c0 .33-.23.6-.52.6s-.52-.27-.52-.6v-4.38zm-1.47 1c0-.33.23-.6.52-.6s.52.27.52.6v3.38c0 .33-.23.6-.52.6s-.52-.27-.52-.6v-3.38zm-1.46.61c0-.33.23-.6.52-.6s.51.27.51.6v2.77c0 .33-.23.6-.51.6s-.52-.27-.52-.6v-2.77zm-1.46-.3c0-.33.23-.6.51-.6s.52.27.52.6v3.07c0 .33-.23.6-.52.6s-.51-.27-.51-.6v-3.07zm-1.46 1.05c0-.33.23-.6.52-.6s.52.27.52.6v2.02c0 .33-.23.6-.52.6s-.52-.27-.52-.6v-2.02zm-1.33.62c0-.33.23-.6.51-.6s.52.27.52.6v1.4c0 .33-.23.6-.52.6s-.51-.27-.51-.6v-1.4zm23.01-1.6c0-1.78-1.44-3.23-3.22-3.23-.42 0-.82.08-1.2.23a4.34 4.34 0 0 0-4.04-2.88c-.68 0-1.32.16-1.89.44v9.64h10.35c1.78 0 3.22-1.45 3.22-3.23z" />
+                        </svg>
+                        SoundCloud
+                    </a>
+
+                    <!-- Botón de Facebook -->
+                    <a href="https://www.facebook.com/djorgeleal" target="_blank" rel="noopener noreferrer"
+                        class="group flex items-center gap-3 px-6 py-3.5 bg-black/40 hover:bg-black/70 border border-cyber-purple/30 hover:border-cyber-purple rounded-xl text-sm font-orbitron font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 hover:shadow-neon-purple text-white">
+                        <svg class="w-5 h-5 fill-current text-cyber-purple group-hover:animate-pulse"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.8c4.56-.93 8-4.96 8-9.8z" />
+                        </svg>
+                        Facebook
+                    </a>
+
+                    <!-- Botón de WhatsApp -->
+                    <a href="https://wa.me/573188614010?text=Hola%20DJORGELEAL!%20Me%20encantó%20tu%20sitio%20web%20e%20interfaz%20de%20música,%20me%20gustaría%20saber%20más."
+                        target="_blank" rel="noopener noreferrer"
+                        class="group flex items-center gap-3 px-6 py-3.5 bg-black/40 hover:bg-black/70 border border-cyber-green/30 hover:border-cyber-green rounded-xl text-sm font-orbitron font-bold uppercase tracking-wider transition-all duration-300 hover:scale-105 hover:shadow-neon-green text-white">
+                        <svg class="w-5 h-5 fill-current text-cyber-green group-hover:animate-pulse"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.953-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.62.962 3.21 1.468 4.932 1.469 5.405 0 9.801-4.393 9.804-9.797.002-2.597-1.006-5.038-2.842-6.874-1.837-1.836-4.278-2.842-6.883-2.843-5.411 0-9.808 4.393-9.811 9.799-.001 1.83.501 3.559 1.453 5.114l-.956 3.49 3.585-.94c1.554.848 3.177 1.282 4.658 1.282zm11.304-7.618c-.301-.151-1.785-.881-2.062-.982-.278-.102-.48-.152-.681.151-.202.303-.781.982-.957 1.184-.176.202-.352.227-.653.076-.301-.151-1.272-.469-2.423-1.496-.895-.798-1.5-1.784-1.675-2.086-.176-.302-.019-.465.132-.614.136-.134.302-.353.453-.529.151-.176.202-.302.302-.504.101-.202.05-.378-.026-.529-.075-.151-.681-1.642-.932-2.247-.245-.589-.493-.509-.68-.519-.176-.009-.378-.011-.58-.011-.202 0-.53.076-.807.379-.278.302-1.06 1.037-1.06 2.529 0 1.491 1.085 2.932 1.236 3.133.151.202 2.136 3.261 5.175 4.572.723.312 1.288.499 1.728.639.726.23 1.387.198 1.91.12.583-.087 1.785-.73 2.037-1.437.252-.707.252-1.314.176-1.437-.076-.123-.278-.202-.58-.353z" />
+                        </svg>
+                        WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE MÚSICA & REPRODUCTOR ESTILO APPLE -->
+    <section id="music" class="py-24 relative bg-cyber-dark/85 backdrop-blur-md border-t border-white/5 z-10">
+        <!-- Luces de neón de fondo específicas -->
+        <div class="absolute right-0 top-1/4 w-96 h-96 bg-cyber-cyan/5 rounded-full blur-[120px] pointer-events-none">
+        </div>
+        <div class="absolute left-0 bottom-1/4 w-96 h-96 bg-cyber-pink/5 rounded-full blur-[120px] pointer-events-none">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-cyber-pink font-orbitron text-xs tracking-widest uppercase font-bold">Lanzamiento
+                    Oficial</span>
+                <h2 class="font-orbitron text-4xl md:text-5xl font-black tracking-wide mt-2">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-pink to-cyber-cyan">HARD
+                        FUSION</span>
+                </h2>
+                <p class="text-gray-400 max-w-xl mx-auto mt-4 text-base">
+                    Escucha en exclusiva mis producciones musicales
+                </p>
+            </div>
+
+            <!-- Estructura del Reproductor Estilo REPRO-STYLE -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+                <!-- REPRODUCTOR PRINCIPAL (LADO IZQUIERDO - 7 Columnas) -->
+                <div
+                    class="lg:col-span-7 glass-panel rounded-3xl border border-white/10 p-6 md:p-8 shadow-[0_0_30px_rgba(255,0,60,0.1)] relative overflow-hidden flex flex-col md:flex-row gap-6 md:gap-8 items-center">
+
+                    <!-- Brillo de esquina estilo Apple -->
+                    <div
+                        class="absolute top-0 right-0 w-24 h-24 border-r border-t border-cyber-cyan/20 rounded-tr-3xl pointer-events-none">
+                    </div>
+                    <div
+                        class="absolute bottom-0 left-0 w-24 h-24 border-l border-b border-cyber-pink/20 rounded-bl-3xl pointer-events-none">
+                    </div>
+
+                    <!-- Cover Art (Carátula del álbum) -->
+                    <div
+                        class="relative w-52 h-52 sm:w-60 sm:h-60 flex-shrink-0 group overflow-hidden rounded-2xl shadow-[0_10px_35px_rgba(255,0,60,0.25)]">
+                        <img id="player-art" src="baila_album_cover.png" alt="Baila Album Cover"
+                            class="w-full h-full object-cover transition-all duration-700 group-hover:scale-105">
+                        <!-- Holographic Vinyl effect behind or overlay -->
+                        <div
+                            class="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-white/10 pointer-events-none">
+                        </div>
+                        <!-- Playing state animated glow ring -->
+                        <div id="art-glow-ring"
+                            class="absolute inset-0 border-2 border-transparent rounded-2xl pointer-events-none transition-colors duration-500">
+                        </div>
+                    </div>
+
+                    <!-- Detalles del tema y controles -->
+                    <div class="flex-1 w-full flex flex-col justify-between self-stretch">
+                        <div>
+                            <!-- Badge & Song Info -->
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <span id="player-badge"
+                                        class="text-[9px] uppercase font-bold tracking-widest text-white bg-cyber-pink/80 px-2 py-0.5 rounded border border-cyber-pink/30">NUEVO
+                                        SINGLE</span>
+                                    <h3 id="player-title"
+                                        class="font-orbitron font-extrabold text-xl md:text-2xl mt-2 tracking-wide text-white leading-tight">
+                                        Secuencia (HardFusion)</h3>
+                                    <p id="player-artist" class="text-gray-400 font-semibold text-sm mt-0.5">djorgeleal
+                                    </p>
+                                </div>
+                                <!-- Visual Indicator (Apple AirPlay or similar icon style) -->
+                                <button class="text-gray-500 hover:text-white transition-colors"
+                                    aria-label="Visualizer Mode">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Siri / Apple Music Wave Visualizer Canvas -->
+                            <div
+                                class="w-full h-10 mt-4 relative bg-black/20 rounded-xl overflow-hidden border border-white/5">
+                                <canvas id="music-visualizer" class="w-full h-full"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Barra de progreso e información de tiempo -->
+                        <div class="mt-5 space-y-1">
+                            <div id="seek-container"
+                                class="w-full bg-white/10 h-1.5 rounded-full cursor-pointer relative group">
+                                <div id="seek-progress"
+                                    class="bg-gradient-to-r from-cyber-pink to-cyber-cyan h-full w-0 rounded-full relative transition-all duration-75">
+                                    <div
+                                        class="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full scale-0 group-hover:scale-100 transition-transform shadow-[0_0_8px_rgba(255,0,60,0.8)]">
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="flex justify-between text-[11px] font-orbitron font-semibold text-gray-500 select-none">
+                                <span id="player-time">0:00</span>
+                                <span id="player-remaining">-0:00</span>
+                            </div>
+                        </div>
+
+                        <!-- Controles de Reproducción y Volumen -->
+                        <div class="mt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <!-- Botones multimedia principales -->
+                            <div class="flex items-center space-x-5">
+                                <button onclick="prevTrack()"
+                                    class="text-gray-400 hover:text-white transition-colors transform active:scale-90 p-1.5"
+                                    aria-label="Anterior">
+                                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                        <path d="M6 6h2v12H6zm3.5 6L19 18V6z" />
+                                    </svg>
+                                </button>
+                                <button id="play-pause-btn" onclick="togglePlay()"
+                                    class="w-12 h-12 rounded-full bg-white text-black flex items-center justify-center hover:scale-105 active:scale-95 transition-all shadow-[0_4px_15px_rgba(255,255,255,0.2)]"
+                                    aria-label="Reproducir o Pausar">
+                                    <!-- Play Icon -->
+                                    <svg id="play-icon" class="w-5 h-5 fill-current ml-0.5" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z" />
+                                    </svg>
+                                    <!-- Pause Icon -->
+                                    <svg id="pause-icon" class="hidden w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                                    </svg>
+                                </button>
+                                <button onclick="nextTrack()"
+                                    class="text-gray-400 hover:text-white transition-colors transform active:scale-90 p-1.5"
+                                    aria-label="Siguiente">
+                                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                        <path d="M4 18l10.5-6L4 6v12zm14-12v12h2V6h-2z" />
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Barra de volumen rápida -->
+                            <div class="flex items-center space-x-2 w-full sm:w-32 justify-between sm:justify-start">
+                                <button onclick="toggleMute()" class="text-gray-500 hover:text-white transition-colors"
+                                    id="mute-btn">
+                                    <svg id="vol-icon" class="w-4 h-4" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z">
+                                        </path>
+                                    </svg>
+                                    <svg id="mute-icon" class="hidden w-4 h-4" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15zM17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2">
+                                        </path>
+                                    </svg>
+                                </button>
+                                <input type="range" id="player-volume" min="0" max="1" step="0.05" value="0.8"
+                                    class="w-20 accent-cyber-pink bg-white/10 rounded-lg h-1 appearance-none cursor-pointer">
+                                <span id="volume-val"
+                                    class="text-[10px] font-orbitron font-bold text-gray-500 w-6 text-right">80%</span>
+                            </div>
+
+                            <!-- Bucle -->
+                            <button id="loop-toggle" onclick="toggleLoop()"
+                                class="px-3 py-1.5 rounded-lg border border-white/10 hover:border-white/20 text-[10px] text-gray-400 hover:text-white transition-colors uppercase tracking-wider font-orbitron">
+                                BUCLE: OFF
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PLAYLIST SIDEBAR (LADO DERECHO - 5 Columnas) -->
+                <div
+                    class="lg:col-span-5 bg-white/5 border border-white/10 rounded-3xl p-5 md:p-6 space-y-4 flex flex-col justify-between self-stretch">
+                    <div class="w-full">
+                        <div class="flex justify-between items-center border-b border-white/10 pb-3">
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-widest font-orbitron">Lista
+                                de Canciones</span>
+                            <span id="track-count" class="text-[11px] text-cyber-pink font-orbitron font-semibold">4
+                                Temas</span>
+                        </div>
+
+                        <!-- Scrollable Playlist Queue -->
+                        <div id="playlist-queue" class="space-y-2 max-h-[200px] overflow-y-auto pr-1 mt-3">
+                            <!-- Los items se inyectarán dinámicamente con JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- TOAST NOTIFICATIONS CENTER -->
+    <div id="toast-box" class="fixed bottom-6 right-6 z-50 flex flex-col space-y-2 pointer-events-none"></div>
+
+    <!-- FOOTER -->
+    <footer class="bg-cyber-dark/95 border-t border-white/5 py-12 text-center text-gray-500 text-sm z-10 relative">
+        <p class="mb-4">&copy; 2026 DJORGELEAL / DJ & Producer Oficial. Todos los derechos reservados.</p>
+        <div class="flex justify-center space-x-6">
+            <a href="https://wa.me/573188614010?text=Hola%20DJORGELEAL!%20Me%20encantó%20tu%20sitio%20web%20e%20interfaz%20de%20música,%20me%20gustaría%20saber%20más."
+                target="_blank" rel="noopener noreferrer"
+                class="hover:text-cyber-pink transition-colors font-semibold">Si te gusta el diseño de la página puedes
+                contactarme y hacemos el tuyo.</a>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE SCRIPTS -->
+    <script>
+        // --- MENÚ MÓVIL ---
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // --- ONDA CANVAS EN EL HERO ---
+        const heroCanvas = document.getElementById('hero-canvas');
+        const heroCtx = heroCanvas.getContext('2d');
+
+        function resizeHeroCanvas() {
+            heroCanvas.width = heroCanvas.offsetWidth;
+            heroCanvas.height = heroCanvas.offsetHeight;
+        }
+        resizeHeroCanvas();
+        window.addEventListener('resize', resizeHeroCanvas);
+
+        let mouseX = 0;
+        let mouseY = 0;
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateHero() {
+            heroCtx.clearRect(0, 0, heroCanvas.width, heroCanvas.height);
+            heroCtx.lineWidth = 1.2;
+
+            const points = 60;
+            const waveWidth = heroCanvas.width;
+
+            for (let layer = 0; layer < 5; layer++) {
+                heroCtx.beginPath();
+                const opacity = (0.28 - (layer * 0.05)).toFixed(2);
+
+                const r = Math.floor(255 - (mouseX / window.innerWidth) * 100);
+                const g = Math.floor((mouseY / window.innerHeight) * 50);
+                const b = Math.floor(60 + (mouseX / window.innerWidth) * 150);
+
+                heroCtx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${opacity})`;
+
+                for (let i = 0; i <= points; i++) {
+                    const x = (i / points) * waveWidth;
+                    const frequency = 0.007 + (layer * 0.0015);
+                    const amplitude = 65 - (layer * 9);
+
+                    const mouseDistanceX = Math.abs(x - mouseX);
+                    const hoverBend = mouseDistanceX < 200 ? (200 - mouseDistanceX) * 0.15 : 0;
+
+                    const y = (heroCanvas.height / 2.2) +
+                        Math.sin(x * frequency + (Date.now() * 0.0012)) * amplitude +
+                        (Math.cos(x * 0.02 + (Date.now() * 0.0008)) * hoverBend);
+
+                    if (i === 0) heroCtx.moveTo(x, y);
+                    else heroCtx.lineTo(x, y);
+                }
+                heroCtx.stroke();
+            }
+            requestAnimationFrame(animateHero);
+        }
+        animateHero();
+
+        // --- SISTEMA DE NOTIFICACIONES TOAST ---
+        function showToast(message, type = 'pink') {
+            const container = document.getElementById('toast-box');
+            const toast = document.createElement('div');
+
+            let colorClasses = 'border-cyber-pink/50 text-cyber-pink shadow-[0_0_15px_rgba(255,0,60,0.25)]';
+            if (type === 'cyan') colorClasses = 'border-cyber-cyan/50 text-cyber-cyan shadow-[0_0_15px_rgba(0,242,254,0.25)]';
+            if (type === 'green') colorClasses = 'border-cyber-green/50 text-cyber-green shadow-[0_0_15px_rgba(57,255,20,0.25)]';
+
+            toast.className = `p-4 rounded-xl text-white font-semibold text-xs tracking-wider uppercase font-orbitron flex items-center justify-between border w-80 translate-y-10 opacity-0 transition-all duration-300 pointer-events-auto bg-[#0a0a14]/95 ${colorClasses}`;
+
+            toast.innerHTML = `
+                <div class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-current animate-ping"></span>
+                    <span>${message}</span>
+                </div>
+                <button class="ml-4 font-bold text-gray-500 hover:text-white focus:outline-none">&times;</button>
+            `;
+
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-10', 'opacity-0');
+            }, 10);
+
+            const removeToast = () => {
+                toast.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            };
+
+            const timer = setTimeout(removeToast, 4000);
+
+            toast.querySelector('button').addEventListener('click', () => {
+                clearTimeout(timer);
+                removeToast();
+            });
+        }
+
+
+
+        // --- BLOQUEO DE CLIC DERECHO ---
+        document.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            showToast("🔒 ACCESO RESTRINGIDO: CLIC DERECHO DESACTIVADO", "pink");
+        });
+
+        // --- SISTEMA DE PROTECCIÓN ANTI-CLONACIÓN Y ANTI-INSPECCIÓN ---
+        // 1. Bloquear atajos de teclado de depuración y descarga
+        document.addEventListener('keydown', (e) => {
+            // F12
+            if (e.key === 'F12') {
+                e.preventDefault();
+                showToast("🔒 SEGURIDAD: INSPECTOR DESACTIVADO", "pink");
+            }
+            // Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C (Inspectores de desarrollo)
+            if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) {
+                e.preventDefault();
+                showToast("🔒 SEGURIDAD: INSPECTOR DESACTIVADO", "pink");
+            }
+            // Ctrl+U (Ver código fuente)
+            if (e.ctrlKey && (e.key === 'U' || e.key === 'u')) {
+                e.preventDefault();
+                showToast("🔒 CÓDIGO FUENTE PROTEGIDO", "pink");
+            }
+            // Ctrl+S (Guardar página)
+            if (e.ctrlKey && (e.key === 'S' || e.key === 's')) {
+                e.preventDefault();
+                showToast("🔒 DESCARGA COMPLETA BLOQUEADA", "pink");
+            }
+            // Ctrl+A (Evitar seleccionar todo para copiar texto)
+            if (e.ctrlKey && (e.key === 'A' || e.key === 'a')) {
+                e.preventDefault();
+            }
+        });
+
+        // 2. Bloquear arrastre de imágenes
+        document.addEventListener('dragstart', (e) => {
+            if (e.target.nodeName === 'IMG') {
+                e.preventDefault();
+            }
+        });
+
+        // 3. Estilos dinámicos para evitar la selección de texto e imágenes
+        const securityStyle = document.createElement('style');
+        securityStyle.innerHTML = `
+            body {
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+            img {
+                -webkit-user-drag: none;
+                user-drag: none;
+                pointer-events: none;
+            }
+        `;
+        document.head.appendChild(securityStyle);
+
+        /*
+        // 4. Bloqueo de Dominio Autorizado (Domain Lock)
+        const authorizedDomains = ["localhost", "127.0.0.1", "djorgeleal.github.io", "djorgeleal.com"];
+        const currentHostname = window.location.hostname;
+        // Se ejecuta solo si es cargado en la web (evita bloquear el archivo directo local file:// en desarrollo)
+        if (currentHostname && !authorizedDomains.includes(currentHostname)) {
+            document.body.innerHTML = `
+                <div style="height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; background:#030306; color:#ff003c; font-family:'Orbitron',sans-serif; text-align:center; padding:20px;">
+                    <h1 style="font-size:2.5rem; margin-bottom:10px; text-shadow: 0 0 15px rgba(255,0,60,0.6); font-weight:900; letter-spacing: 2px;">🔒 ALERTA DE SEGURIDAD</h1>
+                    <p style="color:#ffffff; font-size:1.1rem; margin-bottom: 25px; font-family:'Rajdhani',sans-serif;">Este sitio web es una copia no autorizada y ha sido bloqueado por seguridad.</p>
+                    <a href="https://djorgeleal.github.io/landingpage/djorgeleal_web_app%20(1).html" style="padding:12px 28px; border:1px solid #ff003c; color:#ffffff; background: rgba(255,0,60,0.1); font-weight:bold; letter-spacing:1px; text-transform:uppercase; text-decoration:none; border-radius:10px; box-shadow: 0 0 10px rgba(255,0,60,0.2); transition: all 0.3s;" onmouseover="this.style.background='#ff003c'" onmouseout="this.style.background='rgba(255,0,60,0.1)'">Ir al sitio oficial</a>
+                </div>
+            `;
+        }
+        */
+
+        // ==========================================
+        // --- MOTOR DE AUDIO & REPRODUCTOR APPLE ---
+        // --- PLAYER 1 STATES ---
+        let audioCtx = null;
+        let masterGain = null;
+        let analyser = null;
+        let visualizerDataArray = null;
+        let isPlaying = false;
+        let isLooping = false;
+        let isMuted = false;
+        let previousVolume = 0.8;
+        let playInterval = null;
+        let activeTrackIndex = 0;
+        let htmlAudioElement = null;
+        let fallbackAudio = null;
+        let trackPlaybackSeconds = 0;
+
+        const playerCanvas = document.getElementById('music-visualizer');
+        const playerCanvasCtx = playerCanvas.getContext('2d');
+
+        let playlistTracks = [
+            {
+                id: 1,
+                title: "Secuencia",
+                artist: "djorgeleal",
+                genre: "Hard Fusion",
+                src: "https://djorgeleal.github.io/musicas/Secuencia-djorgeleal(HardFusion).mp3",
+                duration: 290,
+                isLocal: true,
+                art: "baila_album_cover.png",
+                badge: "LANZAMIENTO"
+            },
+            {
+                id: 2,
+                title: "Hey boy - Hey girl Remix",
+                artist: "djorgeleal",
+                genre: "Hard Fusion",
+                src: "https://djorgeleal.github.io/musicas/Hey-boy-Hey-girl-Remix-djorgeleal(HARDFUSION.mp3",
+                duration: 180,
+                isLocal: true,
+                art: "baila_album_cover.png",
+                badge: "LANZAMIENTO"
+            },
+            {
+                id: 3,
+                title: "Alucinando",
+                artist: "djorgeleal",
+                genre: "Hard Fusion",
+                src: "https://djorgeleal.github.io/musicas/Alucinando-djorgeleal-(HardFusion).mp3",
+                duration: 240,
+                isLocal: true,
+                art: "baila_album_cover.png",
+                badge: "LANZAMIENTO"
+            },
+            {
+                id: 4,
+                title: "Prendelo (Pinguino Remix)",
+                artist: "djorgeleal",
+                genre: "Hard Fusion",
+                src: "https://djorgeleal.github.io/musicas/Prendelo-Pinguino-Remix-djorgeleal.mp3",
+                duration: 240,
+                isLocal: true,
+                art: "baila_album_cover.png",
+                badge: "LANZAMIENTO"
+            },
+            {
+                id: 5,
+                title: "One Shot",
+                artist: "djorgeleal",
+                genre: "Hard Fusion",
+                src: "https://djorgeleal.github.io/musicas/One-Shot-djorgeleal(HardFusion).mp3",
+                duration: 240,
+                isLocal: true,
+                art: "baila_album_cover.png",
+                badge: "LANZAMIENTO"
+            },
+            {
+                id: 6,
+                title: "Stutter",
+                artist: "djorgeleal",
+                genre: "Hard Fusion",
+                src: "https://djorgeleal.github.io/musicas/Stutter-djorgeleal(HardFusion).mp3",
+                duration: 240,
+                isLocal: true,
+                art: "baila_album_cover.png",
+                badge: "LANZAMIENTO"
+            },
+            {
+                id: 7,
+                title: "Breack to house",
+                artist: "djorgeleal",
+                genre: "Hard Fusion",
+                src: "https://djorgeleal.github.io/musicas/Breack-to-house(HardFusion).mp3",
+                duration: 240,
+                isLocal: true,
+                art: "baila_album_cover.png",
+                badge: "LANZAMIENTO"
+            },
+            {
+                id: 8,
+                title: "Hard Start",
+                artist: "djorgeleal",
+                genre: "Hard Fusion",
+                src: "https://djorgeleal.github.io/musicas/Hard-Start.mp3",
+                duration: 240,
+                isLocal: true,
+                art: "baila_album_cover.png",
+                badge: "LANZAMIENTO"
+            },
+            {
+                id: 9,
+                title: "HardSound",
+                artist: "djorgeleal",
+                genre: "Hard Fusion",
+                src: "https://djorgeleal.github.io/musicas/HardSound.mp3",
+                duration: 240,
+                isLocal: true,
+                art: "baila_album_cover.png",
+                badge: "LANZAMIENTO"
+            },
+            {
+                id: 10,
+                title: "Subsonscios",
+                artist: "djorgeleal",
+                genre: "Hard Fusion",
+                src: "https://djorgeleal.github.io/musicas/Subsonscios.mp3",
+                duration: 240,
+                isLocal: true,
+                art: "baila_album_cover.png",
+                badge: "LANZAMIENTO"
+            },
+            {
+                id: 11,
+                title: "Tac Tic Tuc",
+                artist: "djorgeleal",
+                genre: "Hard Fusion",
+                src: "https://djorgeleal.github.io/musicas/Tac-Tic-Tuc.mp3",
+                duration: 240,
+                isLocal: true,
+                art: "baila_album_cover.png",
+                badge: "LANZAMIENTO"
+            },
+            {
+                id: 12,
+                title: "Alarma",
+                artist: "djorgeleal",
+                genre: "Hard Fusion",
+                src: "https://djorgeleal.github.io/musicas/Alarma.mp3",
+                duration: 240,
+                isLocal: true,
+                art: "baila_album_cover.png",
+                badge: "LANZAMIENTO"
+            },
+            {
+                id: 13,
+                title: "Check Out",
+                artist: "djorgeleal",
+                genre: "Hard Fusion",
+                src: "https://djorgeleal.github.io/musicas/Check-Out.mp3",
+                duration: 240,
+                isLocal: true,
+                art: "baila_album_cover.png",
+                badge: "LANZAMIENTO"
+            },
+            {
+                id: 14,
+                title: "Rumore Quimico Remix",
+                artist: "djorgeleal",
+                genre: "Hard Fusion",
+                src: "https://djorgeleal.github.io/musicas/Rumore-Quimico.mp3",
+                duration: 240,
+                isLocal: true,
+                art: "baila_album_cover.png",
+                badge: "LANZAMIENTO"
+            }
+        ];
+
+        // --- PLAYER 1 FUNCTIONS ---
+        function initAudioEngine() {
+            if (!audioCtx) {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                audioCtx = new AudioContext();
+            }
+            if (masterGain) return;
+
+            masterGain = audioCtx.createGain();
+            const volumeSlider = document.getElementById('player-volume');
+            masterGain.gain.setValueAtTime(parseFloat(volumeSlider.value), audioCtx.currentTime);
+
+            analyser = audioCtx.createAnalyser();
+            analyser.fftSize = 256;
+
+            masterGain.connect(analyser);
+            analyser.connect(audioCtx.destination);
+
+            visualizerDataArray = new Uint8Array(analyser.frequencyBinCount);
+
+            if (!htmlAudioElement) {
+                htmlAudioElement = new Audio();
+                htmlAudioElement.crossOrigin = "anonymous";
+                try {
+                    const source = audioCtx.createMediaElementSource(htmlAudioElement);
+                    source.connect(masterGain);
+                } catch (e) {
+                    console.warn("Audio Element already routed.", e);
+                }
+            }
+
+            volumeSlider.addEventListener('input', (e) => {
+                const val = parseFloat(e.target.value);
+                document.getElementById('volume-val').innerText = `${Math.round(val * 100)}%`;
+                if (masterGain) masterGain.gain.setValueAtTime(val, audioCtx.currentTime);
+                if (fallbackAudio) fallbackAudio.volume = val;
+                if (val > 0) isMuted = false;
+                updateVolumeUI();
+            });
+
+            drawPlayerVisualizer();
+        }
+
+        function renderPlaylist() {
+            const queue = document.getElementById('playlist-queue');
+            document.getElementById('track-count').innerText = `${playlistTracks.length} Temas`;
+            queue.innerHTML = '';
+
+            playlistTracks.forEach((track, idx) => {
+                const isActive = idx === activeTrackIndex;
+                const item = document.createElement('button');
+                item.className = `w-full flex items-center justify-between p-3 rounded-xl transition-all border text-left ${isActive
+                    ? 'bg-cyber-pink/10 border-cyber-pink text-white shadow-neon-pink/10'
+                    : 'bg-black/20 border-white/5 hover:border-white/10 text-gray-400 hover:text-white'
+                    }`;
+                item.onclick = () => selectTrack(idx);
+
+                item.innerHTML = `
+                    <div class="flex items-center space-x-3 overflow-hidden">
+                        <span class="font-orbitron font-bold text-[10px] ${isActive ? 'text-cyber-pink' : 'text-gray-600'}">${String(idx + 1).padStart(2, '0')}</span>
+                        <div class="truncate">
+                            <h4 class="font-bold text-xs text-white truncate">${track.title}</h4>
+                            <span class="text-[9px] uppercase tracking-wider text-gray-500 font-semibold">${track.genre}</span>
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-orbitron text-gray-500 flex-shrink-0">${formatTime(track.duration)}</span>
+                `;
+                queue.appendChild(item);
+            });
+        }
+
+        function loadTrack(index) {
+            stopCurrentSynthesizer();
+            stopFallbackAudio();
+            if (htmlAudioElement) {
+                htmlAudioElement.pause();
+            }
+
+            activeTrackIndex = index;
+            const track = playlistTracks[activeTrackIndex];
+
+            document.getElementById('player-title').innerText = track.title;
+            document.getElementById('player-artist').innerText = track.artist;
+            document.getElementById('player-badge').innerText = track.badge;
+            document.getElementById('player-art').src = track.art;
+
+            const badgeEl = document.getElementById('player-badge');
+            if (!track.isLocal) {
+                badgeEl.className = "text-[9px] uppercase font-bold tracking-widest text-white bg-cyber-cyan/80 px-2 py-0.5 rounded border border-cyber-cyan/30";
+            } else {
+                badgeEl.className = "text-[9px] uppercase font-bold tracking-widest text-white bg-cyber-pink/80 px-2 py-0.5 rounded border border-cyber-pink/30";
+            }
+
+            document.getElementById('player-time').innerText = "0:00";
+            document.getElementById('player-remaining').innerText = "-" + formatTime(track.duration);
+
+            trackPlaybackSeconds = 0;
+            updateProgressBar();
+
+            if (track.isLocal) {
+                initAudioEngine();
+                if (htmlAudioElement) {
+                    htmlAudioElement.src = track.src;
+                    htmlAudioElement.loop = isLooping;
+                    htmlAudioElement.load();
+
+                    htmlAudioElement.onloadedmetadata = function () {
+                        track.duration = Math.floor(htmlAudioElement.duration);
+                        document.getElementById('player-remaining').innerText = "-" + formatTime(track.duration);
+                        renderPlaylist();
+                    };
+                }
+            }
+            renderPlaylist();
+        }
+
+        function selectTrack(index) {
+            loadTrack(index);
+            if (isPlaying) {
+                play();
+            } else {
+                togglePlay();
+            }
+        }
+
+        function togglePlay() {
+            initAudioEngine();
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            const playIcon = document.getElementById('play-icon');
+            const pauseIcon = document.getElementById('pause-icon');
+            const glowRing = document.getElementById('art-glow-ring');
+            const coverArt = document.getElementById('player-art');
+
+            if (isPlaying) {
+                pause();
+                playIcon.classList.remove('hidden');
+                pauseIcon.classList.add('hidden');
+                glowRing.style.borderColor = 'transparent';
+                coverArt.classList.remove('animate-pulse');
+            } else {
+                play();
+                playIcon.classList.add('hidden');
+                pauseIcon.classList.remove('hidden');
+                glowRing.style.borderColor = 'rgba(255, 0, 60, 0.6)';
+                glowRing.classList.add('shadow-[0_0_15px_rgba(255,0,60,0.4)]');
+                coverArt.classList.add('animate-pulse');
+            }
+        }
+
+        function play() {
+            isPlaying = true;
+            clearInterval(playInterval);
+            const track = playlistTracks[activeTrackIndex];
+
+            if (track.isLocal) {
+                if (htmlAudioElement) {
+                    htmlAudioElement.play().then(() => {
+                        playInterval = setInterval(() => {
+                            trackPlaybackSeconds = Math.floor(htmlAudioElement.currentTime);
+                            updateProgressBar();
+                            if (htmlAudioElement.ended) {
+                                nextTrack();
+                            }
+                        }, 250);
+                    }).catch(e => {
+                        console.warn("CORS audio play blocked or error. Using fallback element.", e);
+                        playFallbackAudio(track.src);
+                    });
+                }
+            } else {
+                startSynthSequencer(track.src);
+                playInterval = setInterval(() => {
+                    trackPlaybackSeconds++;
+                    updateProgressBar();
+                    if (trackPlaybackSeconds >= track.duration) {
+                        if (isLooping) {
+                            trackPlaybackSeconds = 0;
+                        } else {
+                            nextTrack();
+                        }
+                    }
+                }, 1000);
+            }
+        }
+
+        function playFallbackAudio(src) {
+            stopFallbackAudio();
+            fallbackAudio = new Audio(src);
+            fallbackAudio.volume = parseFloat(document.getElementById('player-volume').value);
+            fallbackAudio.loop = isLooping;
+            fallbackAudio.play().then(() => {
+                playInterval = setInterval(() => {
+                    trackPlaybackSeconds = Math.floor(fallbackAudio.currentTime);
+                    updateProgressBar();
+                    if (fallbackAudio.ended) {
+                        nextTrack();
+                    }
+                }, 250);
+            }).catch(e => {
+                console.error("Fallback audio failed", e);
+                showToast("El archivo no se pudo reproducir. Verifica tu conexión.", "pink");
+                togglePlay();
+            });
+        }
+
+        function stopFallbackAudio() {
+            if (fallbackAudio) {
+                fallbackAudio.pause();
+                fallbackAudio = null;
+            }
+        }
+
+        function pause() {
+            isPlaying = false;
+            clearInterval(playInterval);
+            const track = playlistTracks[activeTrackIndex];
+            if (track.isLocal) {
+                if (htmlAudioElement) htmlAudioElement.pause();
+                stopFallbackAudio();
+            } else {
+                stopCurrentSynthesizer();
+            }
+        }
+
+        function nextTrack() {
+            let nextIdx = activeTrackIndex + 1;
+            if (nextIdx >= playlistTracks.length) {
+                nextIdx = 0;
+            }
+            selectTrack(nextIdx);
+        }
+
+        function prevTrack() {
+            let prevIdx = activeTrackIndex - 1;
+            if (prevIdx < 0) {
+                prevIdx = playlistTracks.length - 1;
+            }
+            selectTrack(prevIdx);
+        }
+
+        function toggleLoop() {
+            isLooping = !isLooping;
+            const btn = document.getElementById('loop-toggle');
+            if (isLooping) {
+                btn.innerText = "BUCLE: ON";
+                btn.classList.add('border-cyber-pink', 'text-cyber-pink');
+                if (htmlAudioElement) htmlAudioElement.loop = true;
+                if (fallbackAudio) fallbackAudio.loop = true;
+            } else {
+                btn.innerText = "BUCLE: OFF";
+                btn.classList.remove('border-cyber-pink', 'text-cyber-pink');
+                if (htmlAudioElement) htmlAudioElement.loop = false;
+                if (fallbackAudio) fallbackAudio.loop = false;
+            }
+            showToast(isLooping ? "🔁 BUCLE ACTIVADO" : "➡️ BUCLE DESACTIVADO", 'cyan');
+        }
+
+        function toggleMute() {
+            const volSlider = document.getElementById('player-volume');
+            isMuted = !isMuted;
+            if (isMuted) {
+                previousVolume = parseFloat(volSlider.value);
+                volSlider.value = 0;
+                document.getElementById('volume-val').innerText = "0%";
+                if (masterGain) masterGain.gain.setValueAtTime(0, audioCtx.currentTime);
+                if (fallbackAudio) fallbackAudio.volume = 0;
+            } else {
+                volSlider.value = previousVolume;
+                document.getElementById('volume-val').innerText = `${Math.round(previousVolume * 100)}%`;
+                if (masterGain) masterGain.gain.setValueAtTime(previousVolume, audioCtx.currentTime);
+                if (fallbackAudio) fallbackAudio.volume = previousVolume;
+            }
+            updateVolumeUI();
+        }
+
+        function updateVolumeUI() {
+            const muteBtn = document.getElementById('mute-btn');
+            const volIcon = document.getElementById('vol-icon');
+            const muteIcon = document.getElementById('mute-icon');
+            const volSlider = document.getElementById('player-volume');
+
+            if (parseFloat(volSlider.value) === 0 || isMuted) {
+                volIcon.classList.add('hidden');
+                muteIcon.classList.remove('hidden');
+            } else {
+                volIcon.classList.remove('hidden');
+                muteIcon.classList.add('hidden');
+            }
+        }
+
+        function updateProgressBar() {
+            const track = playlistTracks[activeTrackIndex];
+            const pct = (trackPlaybackSeconds / track.duration) * 100;
+            document.getElementById('seek-progress').style.width = `${pct}%`;
+            document.getElementById('player-time').innerText = formatTime(trackPlaybackSeconds);
+
+            const remaining = track.duration - trackPlaybackSeconds;
+            document.getElementById('player-remaining').innerText = "-" + formatTime(remaining >= 0 ? remaining : 0);
+        }
+
+        document.getElementById('seek-container').addEventListener('click', (e) => {
+            const track = playlistTracks[activeTrackIndex];
+            const rect = e.currentTarget.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const width = rect.width;
+            const percentage = clickX / width;
+
+            const newTime = percentage * track.duration;
+            trackPlaybackSeconds = Math.floor(newTime);
+
+            if (track.isLocal) {
+                if (fallbackAudio) {
+                    fallbackAudio.currentTime = newTime;
+                } else if (htmlAudioElement) {
+                    htmlAudioElement.currentTime = newTime;
+                }
+            }
+            updateProgressBar();
+        });
+
+        // --- SISTEMA DE SÍNTESIS DE DEMOSTRACIÓN OFFLINE ---
+        let synthScheduler = null;
+        let synthBeatStep = 0;
+
+        function startSynthSequencer(style) {
+            stopCurrentSynthesizer();
+            const stepInterval = (60 / 128 / 4) * 1000;
+
+            synthScheduler = setInterval(() => {
+                if (!audioCtx) return;
+                const now = audioCtx.currentTime;
+
+                if (style === 'synth-techno') {
+                    if (synthBeatStep % 4 === 0) {
+                        const osc = audioCtx.createOscillator();
+                        const gain = audioCtx.createGain();
+                        osc.connect(gain);
+                        gain.connect(masterGain);
+                        osc.frequency.setValueAtTime(140, now);
+                        osc.frequency.exponentialRampToValueAtTime(35, now + 0.25);
+                        gain.gain.setValueAtTime(0.8, now);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.28);
+                        osc.start(now);
+                        osc.stop(now + 0.3);
+                    }
+                    if (synthBeatStep % 4 === 2) {
+                        const osc = audioCtx.createOscillator();
+                        const gain = audioCtx.createGain();
+                        osc.type = 'triangle';
+                        osc.frequency.setValueAtTime(10000, now);
+                        gain.gain.setValueAtTime(0.04, now);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
+                        osc.connect(gain);
+                        gain.connect(masterGain);
+                        osc.start(now);
+                        osc.stop(now + 0.12);
+                    }
+                } else if (style === 'synth-minimal') {
+                    if (synthBeatStep % 4 === 0) {
+                        const osc = audioCtx.createOscillator();
+                        const gain = audioCtx.createGain();
+                        osc.connect(gain);
+                        gain.connect(masterGain);
+                        osc.frequency.setValueAtTime(90, now);
+                        osc.frequency.exponentialRampToValueAtTime(45, now + 0.15);
+                        gain.gain.setValueAtTime(0.6, now);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+                        osc.start(now);
+                        osc.stop(now + 0.2);
+                    }
+                } else {
+                    if (synthBeatStep % 4 === 0) {
+                        const osc = audioCtx.createOscillator();
+                        const gain = audioCtx.createGain();
+                        osc.type = 'sawtooth';
+                        osc.frequency.setValueAtTime(160, now);
+                        osc.frequency.exponentialRampToValueAtTime(25, now + 0.35);
+                        gain.gain.setValueAtTime(0.3, now);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.38);
+                        osc.connect(gain);
+                        gain.connect(masterGain);
+                        osc.start(now);
+                        osc.stop(now + 0.4);
+                    }
+                }
+                synthBeatStep = (synthBeatStep + 1) % 16;
+            }, stepInterval);
+        }
+
+        function stopCurrentSynthesizer() {
+            if (synthScheduler) {
+                clearInterval(synthScheduler);
+                synthScheduler = null;
+            }
+        }
+
+        // --- SHARED UTILITY FUNCTIONS ---
+        function formatTime(seconds) {
+            const m = Math.floor(seconds / 60);
+            const s = Math.floor(seconds % 60);
+            return `${m}:${s < 10 ? '0' : ''}${s}`;
+        }
+
+        // --- VISUALIZADOR DE ONDAS SUTILES ESTILO SIRI/APPLE MUSIC ---
+        function drawPlayerVisualizer() {
+            if (!playerCanvasCtx) return;
+            requestAnimationFrame(drawPlayerVisualizer);
+
+            let hasData = false;
+            if (analyser && visualizerDataArray) {
+                analyser.getByteFrequencyData(visualizerDataArray);
+                for (let i = 0; i < visualizerDataArray.length; i++) {
+                    if (visualizerDataArray[i] > 0) {
+                        hasData = true;
+                        break;
+                    }
+                }
+            }
+
+            playerCanvas.width = playerCanvas.offsetWidth;
+            playerCanvas.height = playerCanvas.offsetHeight;
+
+            const w = playerCanvas.width;
+            const h = playerCanvas.height;
+
+            playerCanvasCtx.clearRect(0, 0, w, h);
+
+            let ampScale = 0;
+            if (isPlaying) {
+                if (hasData) {
+                    let sum = 0;
+                    for (let i = 0; i < visualizerDataArray.length; i++) {
+                        sum += visualizerDataArray[i];
+                    }
+                    ampScale = sum / visualizerDataArray.length / 255;
+                } else {
+                    ampScale = 0.25 + Math.sin(Date.now() * 0.003) * 0.1;
+                }
+            }
+
+            const waves = [
+                { color: 'rgba(255, 0, 60, 0.45)', speed: 0.005, freq: 0.012, phase: 0 },
+                { color: 'rgba(0, 242, 254, 0.45)', speed: 0.007, freq: 0.015, phase: Math.PI / 2 },
+                { color: 'rgba(123, 44, 191, 0.35)', speed: 0.009, freq: 0.008, phase: Math.PI }
+            ];
+
+            waves.forEach(wave => {
+                playerCanvasCtx.beginPath();
+                playerCanvasCtx.strokeStyle = wave.color;
+                playerCanvasCtx.lineWidth = 2.5;
+                playerCanvasCtx.lineCap = 'round';
+
+                for (let x = 0; x < w; x += 4) {
+                    const noise = Math.sin(x * 0.05 + Date.now() * 0.002) * 2;
+                    const y = h / 2 + Math.sin(x * wave.freq + (Date.now() * wave.speed) + wave.phase) * (h * 0.4 * ampScale + noise * ampScale);
+                    if (x === 0) {
+                        playerCanvasCtx.moveTo(x, y);
+                    } else {
+                        playerCanvasCtx.lineTo(x, y);
+                    }
+                }
+                playerCanvasCtx.stroke();
+            });
+        }
+
+
+
+        // Inicializar
+        loadTrack(0);
+    </script>
+</body>
+
+</html>
